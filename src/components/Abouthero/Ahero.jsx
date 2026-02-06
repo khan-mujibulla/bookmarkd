@@ -7,6 +7,7 @@ const Ahero = () => {
     setMounted(true);
   }, []);
 
+  // ok
   return (
     <div className="relative min-h-[90vh] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
       {/* Animated Background Elements */}
