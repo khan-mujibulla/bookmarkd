@@ -28,11 +28,8 @@ const Contact = () => {
       <Contacthero />
       <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Header Section */}
           <div className="text-center mb-16">
-            <div className="inline-block mb-4">
-              {/* You can add an icon here if needed */}
-            </div>
+            <div className="inline-block mb-4"></div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
               Contact BOOKMARK'D
             </h1>
@@ -43,7 +40,6 @@ const Contact = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Panel - Contact Info */}
             <div className="lg:col-span-1">
               <div className="bg-gray-800 rounded-2xl shadow-xl p-8 h-full border border-gray-700">
                 <h2 className="text-2xl font-bold text-white mb-8 flex items-center">
@@ -65,9 +61,7 @@ const Contact = () => {
                   Get In Touch
                 </h2>
 
-                {/* Contact Cards */}
                 <div className="space-y-6">
-                  {/* Phone Card */}
                   <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600 hover:shadow-lg transition-all duration-300 hover:border-blue-500/30">
                     <div className="flex items-start">
                       <div className="bg-blue-600 p-3 rounded-lg mr-4">
@@ -107,7 +101,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Email Card */}
                   <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600 hover:shadow-lg transition-all duration-300 hover:border-purple-500/30">
                     <div className="flex items-start">
                       <div className="bg-purple-600 p-3 rounded-lg mr-4">
@@ -129,7 +122,7 @@ const Contact = () => {
                         <h3 className="font-semibold text-white mb-2">
                           Email Support
                         </h3>
-                        <div className="space-y-1">
+                        <div className="space-y-2">
                           <a
                             href="mailto:mujibullakhan41@gmail.com"
                             className="block text-blue-400 hover:text-blue-300 transition-colors font-medium"
@@ -140,7 +133,7 @@ const Contact = () => {
                             href="mailto:abdulrehmanmodasiya@gmail.com"
                             className="block text-blue-400 hover:text-blue-300 transition-colors font-medium"
                           >
-                            abdulrehmanmodasiya@gmail.com
+                            modasiya178@gmail.com
                           </a>
                           <a
                             href="mailto:mdevang69@gmail.com"
@@ -156,7 +149,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Hours Card */}
                   <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600 hover:shadow-lg transition-all duration-300 hover:border-green-500/30">
                     <div className="flex items-start">
                       <div className="bg-green-600 p-3 rounded-lg mr-4">
@@ -197,7 +189,6 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Quick Tips */}
                 <div className="mt-8 p-6 bg-yellow-900/20 rounded-xl border border-yellow-800/50">
                   <h4 className="font-semibold text-white mb-3 flex items-center">
                     <svg
@@ -224,7 +215,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Right Panel - Contact Form */}
             <div className="lg:col-span-2">
               <div className="bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-700">
                 <div className="mb-8">
@@ -239,7 +229,6 @@ const Contact = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Name Field */}
                     <div className="group">
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Full Name
@@ -272,7 +261,6 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    {/* Email Field */}
                     <div className="group">
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Email Address
@@ -306,7 +294,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Message Field */}
                   <div className="group">
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Your Message
@@ -339,7 +326,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Submit Button */}
                   <div className="pt-4">
                     <button
                       type="submit"
@@ -363,7 +349,6 @@ const Contact = () => {
                   </div>
                 </form>
 
-                {/* Additional Info */}
                 <div className="mt-8 pt-8 border-t border-gray-700">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex items-center">
@@ -422,7 +407,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Footer */}
           <div className="mt-12 text-center">
             <div className="inline-flex items-center justify-center space-x-2 mb-4">
               <span className="text-xl font-bold text-white">BOOKMARK'D</span>

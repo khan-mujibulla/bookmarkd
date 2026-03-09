@@ -1,19 +1,14 @@
-import React from 'react';
-import HeroSections from '../components/Home/HeroSections';
-import Cards from '../components/Cards';
+import React from "react";
+import HeroSections from "../components/Home/HeroSections";
+import Cards from "../components/Cards";
 
 const Home = () => {
   return (
-
     <>
-
-    <HeroSections/>
-  
-    <Cards/>
-    
+      <HeroSections />
+      <Cards />
     </>
-  )
-
+  );
 };
 
 export default Home;

@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-const Ahero = () => {
+const Abouthero = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // ok
   return (
     <div className="relative min-h-[90vh] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        {/* Floating Particles */}
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
@@ -27,7 +24,6 @@ const Ahero = () => {
           />
         ))}
 
-        {/* Grid Pattern */}
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -37,7 +33,6 @@ const Ahero = () => {
           }}
         />
 
-        {/* Gradient Orbs */}
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
@@ -45,12 +40,12 @@ const Ahero = () => {
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 md:pt-32 md:pb-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left Content */}
+            {/* Left Column */}
             <div
               className={`transform transition-all duration-1000 ${
                 mounted
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-20 opacity-0"
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-20 opacity-0"
               }`}
             >
               <div className="inline-flex items-center space-x-3 mb-8">
@@ -89,7 +84,6 @@ const Ahero = () => {
                 coding resources accessible to everyone.
               </p>
 
-              {/* Core Values */}
               <div className="mb-8">
                 <h3 className="text-lg font-semibold text-cyan-300 mb-3">
                   Our Core Values:
@@ -119,12 +113,9 @@ const Ahero = () => {
                 </ul>
               </div>
 
-              {/* Quick Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
                 <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/30">
-                  <div className="text-2xl font-bold text-white mb-1">
-                    20+
-                  </div>
+                  <div className="text-2xl font-bold text-white mb-1">20+</div>
                   <div className="text-xs text-cyan-300">Programming Books</div>
                 </div>
                 <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/30">
@@ -141,7 +132,6 @@ const Ahero = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#our-mission"
@@ -189,18 +179,16 @@ const Ahero = () => {
               </div>
             </div>
 
-            {/* Right Content - Interactive Visual */}
+            {/* Right Column */}
             <div
               className={`transform transition-all duration-1000 delay-300 ${
                 mounted
-                  ? "translate-x-0 opacity-100"
-                  : "translate-x-20 opacity-0"
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-20 opacity-0"
               }`}
             >
               <div className="relative">
-                {/* Main Card */}
                 <div className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 shadow-2xl">
-                  {/* Animated Globe Image */}
                   <div className="absolute -top-4 -right-4 w-32 h-32">
                     <img
                       src="https://img.icons8.com/ios/100/3b82f6/globe--v1.png"
@@ -212,7 +200,6 @@ const Ahero = () => {
                     />
                   </div>
 
-                  {/* Company Information Cards */}
                   <div className="space-y-6">
                     {/* Mission Card */}
                     <div className="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 backdrop-blur-sm rounded-xl p-5 border border-blue-700/30">
@@ -238,7 +225,6 @@ const Ahero = () => {
                       </div>
                     </div>
 
-                    {/* Vision Card */}
                     <div className="bg-gradient-to-br from-cyan-900/30 to-purple-900/30 backdrop-blur-sm rounded-xl p-5 border border-cyan-700/30">
                       <div className="flex items-start space-x-3">
                         <div className="bg-gradient-to-br from-cyan-500 to-cyan-600 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -262,7 +248,6 @@ const Ahero = () => {
                       </div>
                     </div>
 
-                    {/* Impact Card */}
                     <div className="bg-gradient-to-br from-purple-900/30 to-indigo-900/30 backdrop-blur-sm rounded-xl p-5 border border-purple-700/30">
                       <div className="flex items-start space-x-3">
                         <div className="bg-gradient-to-br from-purple-500 to-purple-600 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -315,7 +300,6 @@ const Ahero = () => {
                     </div>
                   </div>
 
-                  {/* Founder's Quote */}
                   <div className="mt-6 pt-6 border-t border-gray-700/50">
                     <div className="flex items-start">
                       <div className="flex-shrink-0">
@@ -347,7 +331,6 @@ const Ahero = () => {
                   </div>
                 </div>
 
-                {/* Floating Elements */}
                 <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl blur-xl"></div>
                 <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl"></div>
               </div>
@@ -356,8 +339,11 @@ const Ahero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div
+        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-500 ${
+          mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+        }`}
+      >
         <a
           href="#story"
           className="group flex flex-col items-center text-cyan-300 hover:text-white transition-colors duration-300"
@@ -373,7 +359,6 @@ const Ahero = () => {
         </a>
       </div>
 
-      {/* Custom Animations */}
       <style jsx>{`
         @keyframes float {
           0%,
@@ -421,4 +406,4 @@ const Ahero = () => {
   );
 };
 
-export default Ahero;
+export default Abouthero;

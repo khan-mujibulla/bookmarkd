@@ -1,6 +1,7 @@
 import React from 'react';
-import Cards from '../components/Cards';
 import Bookhero from '../components/Book/Bookhero';
+import Cards from '../components/Cards';
+
 
 
 
@@ -10,7 +11,9 @@ const Books = () => {
 
     <>
     <Bookhero/>
+    
     <Cards/>
+    
     
     </>
   )

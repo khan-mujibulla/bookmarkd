@@ -9,9 +9,7 @@ const Bookhero = () => {
 
   return (
     <div className="relative min-h-[90vh] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      
       <div className="absolute inset-0">
-        
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
@@ -26,7 +24,6 @@ const Bookhero = () => {
           />
         ))}
 
-        {/* Grid Pattern */}
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -36,7 +33,6 @@ const Bookhero = () => {
           }}
         />
 
-        {/* Gradient Orbs */}
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
@@ -44,7 +40,6 @@ const Bookhero = () => {
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 md:pt-32 md:pb-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left Content */}
             <div
               className={`transform transition-all duration-1000 ${
                 mounted
@@ -83,19 +78,27 @@ const Bookhero = () => {
               </h1>
 
               <p className="text-xl md:text-2xl text-gray-300 mb-6 max-w-2xl leading-relaxed">
-                Explore the world's largest collection of programming books. 
-                From beginner guides to advanced references, find the perfect book 
-                to level up your coding skills.
+                Explore the world's largest collection of programming books.
+                From beginner guides to advanced references, find the perfect
+                book to level up your coding skills.
               </p>
 
-              {/* Featured Categories */}
               <div className="mb-8">
                 <h3 className="text-lg font-semibold text-cyan-300 mb-3">
                   Popular Categories:
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {["JavaScript", "Python", "React", "Java", "Data Science", "Web Development", "Mobile Apps", "Cloud Computing"].map((tech, index) => (
-                    <span 
+                  {[
+                    "JavaScript",
+                    "Python",
+                    "React",
+                    "Java",
+                    "Data Science",
+                    "Web Development",
+                    "Mobile Apps",
+                    "Cloud Computing",
+                  ].map((tech, index) => (
+                    <span
                       key={index}
                       className="px-3 py-1.5 bg-gray-800/50 backdrop-blur-sm border border-gray-700 text-cyan-300 text-sm rounded-lg hover:bg-gray-700/50 transition-all duration-300 hover:scale-105"
                     >
@@ -105,25 +108,20 @@ const Bookhero = () => {
                 </div>
               </div>
 
-              {/* Quick Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
                 <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/30">
-                  <div className="text-2xl font-bold text-white mb-1">
-                    100+
-                  </div>
-                  <div className="text-xs text-cyan-300">
-                    Technologies
-                  </div>
+                  <div className="text-2xl font-bold text-white mb-1">100+</div>
+                  <div className="text-xs text-cyan-300">Technologies</div>
                 </div>
                 <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/30">
                   <div className="text-2xl font-bold text-white mb-1">500+</div>
                   <div className="text-xs text-cyan-300">Expert Authors</div>
                 </div>
                 <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/30">
-                  <div className="text-2xl font-bold text-white mb-1">⭐4.8</div>
-                  <div className="text-xs text-cyan-300">
-                    Avg. Rating
+                  <div className="text-2xl font-bold text-white mb-1">
+                    ⭐4.8
                   </div>
+                  <div className="text-xs text-cyan-300">Avg. Rating</div>
                 </div>
                 <div className="bg-gray-800/40 backdrop-blur-sm rounded-xl p-4 border border-gray-700/30">
                   <div className="text-2xl font-bold text-white mb-1">🆕</div>
@@ -131,7 +129,6 @@ const Bookhero = () => {
                 </div>
               </div>
 
-              {/* Search and Action Buttons */}
               <div className="space-y-4">
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -179,7 +176,6 @@ const Bookhero = () => {
               </div>
             </div>
 
-            {/* Right Content - Interactive Visual */}
             <div
               className={`transform transition-all duration-1000 delay-300 ${
                 mounted
@@ -188,7 +184,6 @@ const Bookhero = () => {
               }`}
             >
               <div className="relative">
-                {/* Main Card */}
                 <div className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 shadow-2xl">
                   {/* Animated Books Image */}
                   <div className="absolute -top-4 -right-4 w-32 h-32">
@@ -202,9 +197,7 @@ const Bookhero = () => {
                     />
                   </div>
 
-                  {/* Featured Books */}
                   <div className="space-y-6">
-                    {/* Top Rated Book */}
                     <div className="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 backdrop-blur-sm rounded-xl p-5 border border-blue-700/30">
                       <div className="flex items-start space-x-4">
                         <div className="relative">
@@ -224,17 +217,21 @@ const Bookhero = () => {
                             JavaScript: The Definitive Guide
                           </h3>
                           <p className="text-gray-300 text-sm mb-2">
-                            Master modern JavaScript with this comprehensive guide
+                            Master modern JavaScript with this comprehensive
+                            guide
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-cyan-300 font-bold">₹899</span>
-                            <span className="text-xs text-gray-400">David Flanagan</span>
+                            <span className="text-cyan-300 font-bold">
+                              ₹899
+                            </span>
+                            <span className="text-xs text-gray-400">
+                              David Flanagan
+                            </span>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* New Release Book */}
                     <div className="bg-gradient-to-br from-cyan-900/30 to-purple-900/30 backdrop-blur-sm rounded-xl p-5 border border-cyan-700/30">
                       <div className="flex items-start space-x-4">
                         <div className="relative">
@@ -257,8 +254,12 @@ const Bookhero = () => {
                             Essential tools for working with data in Python
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-cyan-300 font-bold">₹1,199</span>
-                            <span className="text-xs text-gray-400">Jake VanderPlas</span>
+                            <span className="text-cyan-300 font-bold">
+                              ₹1,199
+                            </span>
+                            <span className="text-xs text-gray-400">
+                              Jake VanderPlas
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -287,17 +288,22 @@ const Bookhero = () => {
                             Learn React from basics to advanced patterns
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-cyan-300 font-bold">₹999</span>
-                            <span className="text-xs text-gray-400">Alex Banks</span>
+                            <span className="text-cyan-300 font-bold">
+                              ₹999
+                            </span>
+                            <span className="text-xs text-gray-400">
+                              Alex Banks
+                            </span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Book Categories */}
                   <div className="mt-6 pt-6 border-t border-gray-700/50">
-                    <h4 className="text-white font-semibold mb-3">Browse by Category:</h4>
+                    <h4 className="text-white font-semibold mb-3">
+                      Browse by Category:
+                    </h4>
                     <div className="grid grid-cols-3 gap-3">
                       <div className="text-center">
                         <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2">
@@ -307,7 +313,9 @@ const Bookhero = () => {
                             className="w-5 h-5"
                           />
                         </div>
-                        <span className="text-xs text-cyan-300">JavaScript</span>
+                        <span className="text-xs text-cyan-300">
+                          JavaScript
+                        </span>
                       </div>
                       <div className="text-center">
                         <div className="bg-gradient-to-br from-green-500 to-green-600 w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2">
@@ -333,7 +341,6 @@ const Bookhero = () => {
                   </div>
                 </div>
 
-                {/* Floating Elements */}
                 <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl blur-xl"></div>
                 <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl"></div>
               </div>
@@ -342,7 +349,6 @@ const Bookhero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <a
           href="#all-books"
@@ -359,7 +365,6 @@ const Bookhero = () => {
         </a>
       </div>
 
-      {/* Custom Animations */}
       <style jsx>{`
         @keyframes float {
           0%,
