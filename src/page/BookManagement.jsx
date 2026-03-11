@@ -5,39 +5,41 @@ const BookManagement = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingBook, setEditingBook] = useState(null);
   const [books, setBooks] = useState([
-    // 1-5: JavaScript aur Python books
-    { id: 1, title: "JavaScript: The Good Parts", author: "Douglas Crockford", price: 799, stock: 45, category: "JavaScript", description: "Most important JavaScript concepts" },
-    { id: 2, title: "Python Mastery", author: "John Smith", price: 849, stock: 32, category: "Python", description: "Complete Python programming guide" },
-    { id: 3, title: "React.js Guide", author: "Jane Doe", price: 899, stock: 28, category: "React", description: "Modern React with Hooks" },
-    { id: 4, title: "C# Programming", author: "Mark Johnson", price: 799, stock: 15, category: "C#", description: ".NET development with C#" },
-    { id: 5, title: "Data Structures", author: "Sarah Wilson", price: 749, stock: 22, category: "DSA", description: "Algorithms and data structures" },
+    // Frontend Books (5)
+    { id: 1, title: "C# Programming", author: "Mark Johnson", price: 899, stock: 15, category: "C#", description: "Master C# with .NET Core, ASP.NET, and advanced OOP concepts. Perfect for beginners and intermediate developers." },
+    { id: 2, title: "JavaScript ES6+", author: "Douglas Crockford", price: 799, stock: 45, category: "JavaScript", description: "Complete guide to modern JavaScript with ES6+ features, async/await, promises, and real-world projects." },
+    { id: 3, title: "HTML5 & CSS3", author: "Emily Brown", price: 699, stock: 38, category: "HTML/CSS", description: "Learn responsive web design, Flexbox, Grid, animations, and modern CSS techniques." },
+    { id: 4, title: "React.js Guide", author: "Jane Doe", price: 849, stock: 28, category: "React", description: "Complete React.js guide with hooks, context API, Redux, Next.js, and advanced patterns." },
+    { id: 5, title: "UX Design for Mobile", author: "Sarah Wilson", price: 1099, stock: 22, category: "UX Design", description: "Master mobile UX/UI design with comprehensive coverage of user research, wireframing, prototyping, and usability testing." },
     
-    // 6-10: Web Development aur Java
-    { id: 6, title: "HTML5 & CSS3", author: "Emily Brown", price: 699, stock: 38, category: "HTML/CSS", description: "Responsive web design" },
-    { id: 7, title: "Java Programming", author: "Robert Chen", price: 899, stock: 25, category: "Java", description: "Core Java and advanced concepts" },
-    { id: 8, title: "Node.js Backend", author: "Mike Ross", price: 849, stock: 19, category: "Node.js", description: "Server-side JavaScript" },
-    { id: 9, title: "MongoDB Database", author: "Lisa Wang", price: 799, stock: 17, category: "Database", description: "NoSQL database design" },
-    { id: 10, title: "SQL Mastery", author: "David Miller", price: 749, stock: 29, category: "SQL", description: "Advanced SQL queries" },
+    // Backend Books (6)
+    { id: 6, title: "Python Mastery", author: "John Smith", price: 849, stock: 32, category: "Python", description: "From basics to advanced Python programming. Includes data science, web development (Django/Flask), automation, and machine learning basics." },
+    { id: 7, title: "Java Development", author: "Robert Chen", price: 999, stock: 25, category: "Java", description: "Comprehensive Java guide covering Spring Boot, Hibernate, microservices, and enterprise application development patterns." },
+    { id: 8, title: "Node.js Backend", author: "Mike Ross", price: 799, stock: 19, category: "Node.js", description: "Master server-side JavaScript with Node.js, Express, MongoDB, REST APIs, authentication, and real-time applications with Socket.io." },
+    { id: 9, title: "C++ Programming", author: "James Wilson", price: 899, stock: 14, category: "C++", description: "Comprehensive C++ guide from fundamentals to advanced topics like STL, templates, memory management, and game development basics." },
+    { id: 10, title: "C Programming", author: "David Miller", price: 649, stock: 29, category: "C", description: "Fundamentals of C programming including pointers, memory management, file handling, and system programming concepts." },
+    { id: 11, title: "PHP Development", author: "Chris Taylor", price: 799, stock: 21, category: "PHP", description: "Modern PHP programming with Laravel framework. Build web applications, REST APIs, and learn best practices for PHP development." },
     
-    // 11-15: Frameworks aur Mobile
-    { id: 11, title: "Angular Framework", author: "James Wilson", price: 899, stock: 14, category: "Angular", description: "Enterprise Angular apps" },
-    { id: 12, title: "Vue.js Essentials", author: "Emma Davis", price: 799, stock: 21, category: "Vue", description: "Progressive JavaScript framework" },
-    { id: 13, title: "Django Web Framework", author: "Chris Taylor", price: 849, stock: 16, category: "Python", description: "Python web development" },
-    { id: 14, title: "Flask API Development", author: "Patricia Green", price: 699, stock: 23, category: "Python", description: "Lightweight Python APIs" },
-    { id: 15, title: "iOS Development", author: "Steve Jobs", price: 999, stock: 11, category: "Mobile", description: "Swift and iOS SDK" },
+    // Framework Books (3)
+    { id: 12, title: "ASP.NET Core", author: "Patricia Green", price: 899, stock: 16, category: "ASP.NET", description: "Build modern web applications with ASP.NET Core. Covers MVC, Web API, Entity Framework, authentication, and deployment strategies." },
+    { id: 13, title: "Django Framework", author: "Emma Davis", price: 849, stock: 23, category: "Django", description: "Build web applications with Django. Covers models, views, templates, authentication, REST APIs, and deployment to production." },
+    { id: 14, title: "Laravel Framework", author: "Lisa Wang", price: 899, stock: 11, category: "Laravel", description: "Master Laravel PHP framework. Includes Eloquent ORM, authentication, APIs, testing, and building modern web applications." },
     
-    // 16-20: Android aur Cloud
-    { id: 16, title: "Android Programming", author: "Sundar Pichai", price: 949, stock: 18, category: "Mobile", description: "Kotlin and Android Studio" },
-    { id: 17, title: "AWS Cloud Computing", author: "Jeff Bezos", price: 1099, stock: 12, category: "Cloud", description: "Amazon Web Services" },
-    { id: 18, title: "Azure Fundamentals", author: "Satya Nadella", price: 999, stock: 9, category: "Cloud", description: "Microsoft Azure cloud" },
-    { id: 19, title: "Docker & Kubernetes", author: "Solomon Hykes", price: 899, stock: 14, category: "DevOps", description: "Container orchestration" },
-    { id: 20, title: "Git Version Control", author: "Linus Torvalds", price: 599, stock: 42, category: "DevOps", description: "Git and GitHub mastery" },
+    // Database Books (3)
+    { id: 15, title: "Database Systems", author: "Steve Jobs", price: 849, stock: 18, category: "Database", description: "Complete guide to database design, SQL queries, normalization, indexing, and working with MySQL, PostgreSQL, and MongoDB." },
+    { id: 16, title: "SQL Mastery", author: "Sundar Pichai", price: 749, stock: 42, category: "SQL", description: "From basic queries to advanced SQL features. Includes performance optimization, stored procedures, and real database projects." },
+    { id: 17, title: "Oracle SQL", author: "Jeff Bezos", price: 1299, stock: 9, category: "Oracle", description: "Specialized guide for Oracle Database development. Covers PL/SQL, performance tuning, administration, and enterprise features." },
     
-    // 21-24: AI, ML aur Others
-    { id: 21, title: "Machine Learning", author: "Andrew Ng", price: 1299, stock: 13, category: "AI/ML", description: "ML algorithms and Python" },
-    { id: 22, title: "Deep Learning", author: "Ian Goodfellow", price: 1499, stock: 8, category: "AI/ML", description: "Neural networks and AI" },
-    { id: 23, title: "Cybersecurity Basics", author: "Kevin Mitnick", price: 899, stock: 16, category: "Security", description: "Network security and ethical hacking" },
-    { id: 24, title: "System Design", author: "Martin Fowler", price: 1199, stock: 10, category: "Architecture", description: "Scalable system architecture" }
+    // Data Science Books (4)
+    { id: 18, title: "Data Visualization", author: "Satya Nadella", price: 699, stock: 13, category: "Data Visualization", description: "Master data visualization with Matplotlib, Seaborn, and Plotly. Create stunning charts, graphs, and dashboards for data analysis." },
+    { id: 19, title: "Pandas", author: "Solomon Hykes", price: 749, stock: 8, category: "Pandas", description: "Complete guide to data manipulation and analysis using Pandas. Real-world datasets, visualization techniques, and data cleaning methods." },
+    { id: 20, title: "AI Fundamentals", author: "Linus Torvalds", price: 1199, stock: 10, category: "AI", description: "Introduction to Artificial Intelligence concepts, algorithms, neural networks, and practical AI applications with Python." },
+    { id: 21, title: "Machine Learning", author: "Andrew Ng", price: 1399, stock: 16, category: "Machine Learning", description: "Complete ML guide covering supervised/unsupervised learning, deep learning, TensorFlow, PyTorch, and real-world projects." },
+    
+    // Theoretical Books (3)
+    { id: 22, title: "Data Structures & Algorithms", author: "Ian Goodfellow", price: 799, stock: 10, category: "DSA", description: "Master essential data structures and algorithms with Python/Java implementations. Includes LeetCode problems and interview preparation." },
+    { id: 23, title: "Cloud Computing Technology", author: "Kevin Mitnick", price: 1099, stock: 12, category: "Cloud", description: "Comprehensive guide to AWS, Azure, and Google Cloud. Includes cloud architecture, services, security, and deployment strategies." },
+    { id: 24, title: "Computer Networks", author: "Martin Fowler", price: 999, stock: 14, category: "Networks", description: "Comprehensive guide to networking concepts, protocols, security, and administration. Practical labs and certification preparation." }
   ]);
 
   const [formData, setFormData] = useState({
@@ -85,11 +87,14 @@ const BookManagement = () => {
     }
   };
 
-  // Category options for dropdown
+  // Category options for dropdown - matching the books above
   const categories = [
-    "JavaScript", "Python", "React", "C#", "DSA", "HTML/CSS", "Java", 
-    "Node.js", "Database", "SQL", "Angular", "Vue", "Mobile", "Cloud", 
-    "DevOps", "AI/ML", "Security", "Architecture"
+    "C#", "JavaScript", "HTML/CSS", "React", "UX Design",
+    "Python", "Java", "Node.js", "C++", "C", "PHP",
+    "ASP.NET", "Django", "Laravel",
+    "Database", "SQL", "Oracle",
+    "Data Visualization", "Pandas", "AI", "Machine Learning",
+    "DSA", "Cloud", "Networks"
   ];
 
   return (
@@ -231,6 +236,7 @@ const BookManagement = () => {
                 placeholder="Description"
                 rows="4"
                 className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500"
+                required
               />
               <div className="flex gap-4 mt-6">
                 <button

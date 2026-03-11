@@ -3,45 +3,41 @@ import React, { useState } from "react";
 
 const CategoryManagement = () => {
   const [categories, setCategories] = useState([
-    // JavaScript aur Web Development
-    { id: 1, name: "JavaScript", books: 45, status: "active", description: "JavaScript programming books including ES6+, Node.js" },
-    { id: 2, name: "Python", books: 38, status: "active", description: "Python programming, Django, Flask, data science" },
-    { id: 3, name: "React", books: 32, status: "active", description: "React.js, hooks, context API, Next.js" },
-    { id: 4, name: "C#", books: 28, status: "active", description: "C# programming, .NET Core, ASP.NET" },
-    { id: 5, name: "DSA", books: 22, status: "active", description: "Data Structures and Algorithms" },
+    // Frontend Categories
+    { id: 1, name: "C#", books: 1, status: "active", description: "C# programming books including .NET Core and ASP.NET" },
+    { id: 2, name: "JavaScript", books: 1, status: "active", description: "JavaScript programming including ES6+ features" },
+    { id: 3, name: "HTML/CSS", books: 1, status: "active", description: "HTML5, CSS3, responsive web design" },
+    { id: 4, name: "React", books: 1, status: "active", description: "React.js, hooks, context API, Next.js" },
+    { id: 5, name: "UX Design", books: 1, status: "active", description: "Mobile UX/UI design and prototyping" },
     
-    // Web Technologies
-    { id: 6, name: "HTML/CSS", books: 38, status: "active", description: "HTML5, CSS3, responsive design" },
-    { id: 7, name: "Java", books: 25, status: "active", description: "Core Java, Spring Boot, Hibernate" },
-    { id: 8, name: "Node.js", books: 19, status: "active", description: "Node.js, Express, backend development" },
-    { id: 9, name: "Database", books: 17, status: "active", description: "MongoDB, MySQL, PostgreSQL" },
-    { id: 10, name: "SQL", books: 29, status: "active", description: "SQL queries, database design" },
+    // Backend Categories
+    { id: 6, name: "Python", books: 1, status: "active", description: "Python programming, Django, Flask, data science" },
+    { id: 7, name: "Java", books: 1, status: "active", description: "Java, Spring Boot, Hibernate" },
+    { id: 8, name: "Node.js", books: 1, status: "active", description: "Node.js, Express, backend development" },
+    { id: 9, name: "C++", books: 1, status: "active", description: "C++ programming, STL, game development" },
+    { id: 10, name: "C", books: 1, status: "active", description: "C programming fundamentals and system programming" },
+    { id: 11, name: "PHP", books: 1, status: "active", description: "PHP, Laravel framework" },
     
-    // Frameworks
-    { id: 11, name: "Angular", books: 14, status: "active", description: "Angular framework, TypeScript" },
-    { id: 12, name: "Vue", books: 21, status: "active", description: "Vue.js, Vuex, Nuxt.js" },
+    // Framework Categories
+    { id: 12, name: "ASP.NET", books: 1, status: "active", description: "ASP.NET Core, MVC, Web API" },
+    { id: 13, name: "Django", books: 1, status: "active", description: "Django framework, REST APIs" },
+    { id: 14, name: "Laravel", books: 1, status: "active", description: "Laravel PHP framework" },
     
-    // Mobile Development
-    { id: 13, name: "Mobile", books: 29, status: "active", description: "iOS, Android, React Native, Flutter" },
+    // Database Categories
+    { id: 15, name: "Database", books: 1, status: "active", description: "Database systems, MySQL, PostgreSQL, MongoDB" },
+    { id: 16, name: "SQL", books: 1, status: "active", description: "SQL queries, optimization" },
+    { id: 17, name: "Oracle", books: 1, status: "active", description: "Oracle Database, PL/SQL" },
     
-    // Cloud aur DevOps
-    { id: 14, name: "Cloud", books: 21, status: "active", description: "AWS, Azure, Google Cloud" },
-    { id: 15, name: "DevOps", books: 56, status: "active", description: "Docker, Kubernetes, CI/CD, Git" },
+    // Data Science Categories
+    { id: 18, name: "Data Visualization", books: 1, status: "active", description: "Matplotlib, Seaborn, Plotly" },
+    { id: 19, name: "Pandas", books: 1, status: "active", description: "Data manipulation with Pandas" },
+    { id: 20, name: "AI", books: 1, status: "active", description: "Artificial Intelligence fundamentals" },
+    { id: 21, name: "Machine Learning", books: 1, status: "active", description: "ML, deep learning, TensorFlow" },
     
-    // AI/ML
-    { id: 16, name: "AI/ML", books: 21, status: "active", description: "Machine Learning, Deep Learning, AI" },
-    
-    // Security aur Architecture
-    { id: 17, name: "Security", books: 16, status: "active", description: "Cybersecurity, ethical hacking" },
-    { id: 18, name: "Architecture", books: 10, status: "active", description: "System design, software architecture" },
-    
-    // Additional Categories
-    { id: 19, name: "C++", books: 15, status: "inactive", description: "C++ programming, STL" },
-    { id: 20, name: "Go", books: 8, status: "inactive", description: "Golang programming" },
-    { id: 21, name: "Rust", books: 6, status: "inactive", description: "Rust programming" },
-    { id: 22, name: "PHP", books: 12, status: "active", description: "PHP, Laravel" },
-    { id: 23, name: "Ruby", books: 7, status: "inactive", description: "Ruby on Rails" },
-    { id: 24, name: "Swift", books: 9, status: "inactive", description: "iOS development with Swift" }
+    // Theoretical Categories
+    { id: 22, name: "DSA", books: 1, status: "active", description: "Data Structures and Algorithms" },
+    { id: 23, name: "Cloud Computing", books: 1, status: "active", description: "AWS, Azure, Google Cloud" },
+    { id: 24, name: "Computer Networks", books: 1, status: "active", description: "Networking concepts and protocols" }
   ]);
 
   const [showModal, setShowModal] = useState(false);
@@ -168,7 +164,7 @@ const CategoryManagement = () => {
                   </td>
                   <td className="px-6 py-4">
                     <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">
-                      {category.books} books
+                      {category.books} {category.books === 1 ? 'book' : 'books'}
                     </span>
                   </td>
                   <td className="px-6 py-4">
