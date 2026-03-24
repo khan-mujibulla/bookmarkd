@@ -45,14 +45,14 @@ const HeroSections = ({ onSearch }) => {
 
   const getTechColor = (tech) => {
     const colors = {
-      Java: "bg-red-900/30",
-      Python: "bg-blue-900/30",
-      JavaScript: "bg-yellow-900/30",
-      "C++": "bg-purple-900/30",
-      HTML: "bg-orange-900/30",
-      ".NET": "bg-green-900/30",
+      Java: "bg-red-100",
+      Python: "bg-blue-100",
+      JavaScript: "bg-yellow-100",
+      "C++": "bg-purple-100",
+      HTML: "bg-orange-100",
+      ".NET": "bg-green-100",
     };
-    return colors[tech] || "bg-gray-900/30";
+    return colors[tech] || "bg-gray-100";
   };
 
   const getBookCount = (tech) => {
@@ -68,12 +68,12 @@ const HeroSections = ({ onSearch }) => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <div className="relative min-h-screen bg-[#F5F6FA] overflow-hidden">
       <div className="absolute inset-0">
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"
+            className="absolute rounded-full bg-gradient-to-r from-[#4F46E5]/20 to-[#4F46E5]/10"
             style={{
               width: `${Math.random() * 40 + 10}px`,
               height: `${Math.random() * 40 + 10}px`,
@@ -85,16 +85,16 @@ const HeroSections = ({ onSearch }) => {
         ))}
 
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                              linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #4F46E5 1px, transparent 1px),
+                              linear-gradient(to bottom, #4F46E5 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
 
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10">
@@ -104,21 +104,19 @@ const HeroSections = ({ onSearch }) => {
               mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <h1 className="text-4xl font-bold text-white lg:text-6xl">
-              BOOK<span className="text-blue-400">MARK'D</span>
+            <h1 className="text-4xl font-bold text-slate-800 lg:text-6xl">
+              BOOK<span className="text-[#4F46E5]">MARK'D</span>
             </h1>
 
-            <p className="mt-4 text-2xl font-semibold text-gray-300">
+            <p className="mt-4 text-2xl font-semibold text-slate-700">
               Your Ultimate Destination for Programming Books
             </p>
 
-            <p className="mt-6 text-lg text-gray-300">
+            <p className="mt-6 text-lg text-slate-600">
               Discover thousands of programming books, tutorials, and resources
               across all major technologies. From beginner guides to advanced
               references, we have everything for your coding journey.
             </p>
-
-            
           </div>
 
           <div
@@ -126,7 +124,7 @@ const HeroSections = ({ onSearch }) => {
               mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <h2 className="mb-10 text-2xl font-semibold text-white">
+            <h2 className="mb-10 text-2xl font-semibold text-slate-800">
               Explore Books by Technology
             </h2>
 
@@ -136,10 +134,10 @@ const HeroSections = ({ onSearch }) => {
                   <button
                     key={tech}
                     onClick={() => handleTechClick(tech)}
-                    className="flex flex-col items-center justify-center p-6 transition-all duration-300 bg-gray-800/50 backdrop-blur-sm rounded-xl hover:shadow-xl hover:scale-105 hover:border-blue-500/30 border border-gray-700/50 group cursor-pointer"
+                    className="flex flex-col items-center justify-center p-6 transition-all duration-300 bg-white/80 backdrop-blur-sm rounded-xl hover:shadow-lg hover:shadow-[#4F46E5]/20 hover:scale-105 hover:border-[#4F46E5] border border-slate-200 group cursor-pointer"
                   >
                     <div
-                      className={`p-4 ${getTechColor(tech)} rounded-full group-hover:opacity-80 transition-colors duration-300`}
+                      className={`p-4 ${getTechColor(tech)} rounded-full group-hover:opacity-80 transition-colors duration-300 shadow-sm`}
                     >
                       <img
                         src={getTechIcon(tech)}
@@ -147,8 +145,8 @@ const HeroSections = ({ onSearch }) => {
                         className="w-12 h-12"
                       />
                     </div>
-                    <span className="mt-4 font-medium text-white">{tech}</span>
-                    <span className="mt-1 text-sm text-gray-400">
+                    <span className="mt-4 font-medium text-slate-800">{tech}</span>
+                    <span className="mt-1 text-sm text-slate-500">
                       {getBookCount(tech)}+ Books
                     </span>
                   </button>
@@ -162,21 +160,21 @@ const HeroSections = ({ onSearch }) => {
               mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <div className="p-6 text-center bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300 hover:scale-105">
-              <div className="text-3xl font-bold text-blue-400">20+</div>
-              <div className="mt-2 text-gray-300">Programming Books</div>
+            <div className="p-6 text-center bg-white/80 backdrop-blur-sm rounded-lg border border-slate-200 hover:border-[#4F46E5] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4F46E5]/20">
+              <div className="text-3xl font-bold text-[#4F46E5]">20+</div>
+              <div className="mt-2 text-slate-600">Programming Books</div>
             </div>
-            <div className="p-6 text-center bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300 hover:scale-105">
-              <div className="text-3xl font-bold text-blue-400">50+</div>
-              <div className="mt-2 text-gray-300">Technologies</div>
+            <div className="p-6 text-center bg-white/80 backdrop-blur-sm rounded-lg border border-slate-200 hover:border-[#4F46E5] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4F46E5]/20">
+              <div className="text-3xl font-bold text-[#4F46E5]">50+</div>
+              <div className="mt-2 text-slate-600">Technologies</div>
             </div>
-            <div className="p-6 text-center bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300 hover:scale-105">
-              <div className="text-3xl font-bold text-blue-400">50+</div>
-              <div className="mt-2 text-gray-300">Authors</div>
+            <div className="p-6 text-center bg-white/80 backdrop-blur-sm rounded-lg border border-slate-200 hover:border-[#4F46E5] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4F46E5]/20">
+              <div className="text-3xl font-bold text-[#4F46E5]">50+</div>
+              <div className="mt-2 text-slate-600">Authors</div>
             </div>
-            <div className="p-6 text-center bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300 hover:scale-105">
-              <div className="text-3xl font-bold text-blue-400">24/7</div>
-              <div className="mt-2 text-gray-300">Support</div>
+            <div className="p-6 text-center bg-white/80 backdrop-blur-sm rounded-lg border border-slate-200 hover:border-[#4F46E5] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#4F46E5]/20">
+              <div className="text-3xl font-bold text-[#4F46E5]">24/7</div>
+              <div className="mt-2 text-slate-600">Support</div>
             </div>
           </div>
 
@@ -185,16 +183,19 @@ const HeroSections = ({ onSearch }) => {
               mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <div className="p-8 bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-sm rounded-2xl border border-blue-500/30 shadow-2xl">
+            <div className="p-8 bg-gradient-to-r from-[#4F46E5] to-[#4F46E5]/80 backdrop-blur-sm rounded-2xl border border-white/20 shadow-xl">
               <h3 className="text-2xl font-bold text-white">
                 Start Your Learning Journey Today!
               </h3>
-              <p className="mt-2 text-blue-100">
+              <p className="mt-2 text-indigo-100">
                 Get access to all programming books with our premium membership
               </p>
-              <div className="mt-6">
-                <button className="px-8 py-3 font-medium text-white transition-all duration-300 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg hover:from-blue-600 hover:to-cyan-600 hover:shadow-xl hover:scale-105">
-                  Explore Knowledge for Future
+              <div className="mt-6 flex gap-4 justify-center">
+                <button className="px-8 py-3 font-medium text-indigo-900 transition-all duration-300 bg-[#FBBF24] rounded-lg hover:bg-[#F59E0B] hover:shadow-xl hover:scale-105 shadow-md">
+                  Shop Now
+                </button>
+                <button className="px-8 py-3 font-medium text-white transition-all duration-300 bg-transparent border-2 border-white/30 rounded-lg hover:bg-white/10 hover:shadow-xl hover:scale-105">
+                  Learn More
                 </button>
               </div>
             </div>

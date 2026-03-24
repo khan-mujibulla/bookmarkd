@@ -142,9 +142,9 @@ const Orders = () => {
 
   const getItemStatusColor = (status) => {
     switch(status) {
-      case "cancelled": return "bg-red-500/20 text-red-400 line-through";
-      case "delivered": return "bg-green-500/20 text-green-400";
-      default: return "bg-yellow-500/20 text-yellow-400";
+      case "cancelled": return "bg-red-500/20 text-red-600 line-through";
+      case "delivered": return "bg-green-500/20 text-green-600";
+      default: return "bg-yellow-500/20 text-yellow-600";
     }
   };
 
@@ -164,28 +164,28 @@ const Orders = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#4F46E5]"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
-            <span className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-purple-600 to-pink-600">
+            <span className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#818CF8]">
               <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#111827] mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#4F46E5] to-[#4F46E5]">
             My Orders
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
             Track and manage your book orders
           </p>
         </div>
@@ -201,8 +201,8 @@ const Orders = () => {
                   onClick={() => setFilter(filterType)}
                   className={`px-4 py-2 rounded-full font-medium capitalize transition-all duration-300 ${
                     filter === filterType
-                      ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
-                      : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                      ? "bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                      : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
                   }`}
                 >
                   {filterType === "all" ? "All Orders" : filterType}
@@ -216,8 +216,8 @@ const Orders = () => {
                 onClick={() => setShowHistory(!showHistory)}
                 className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
                   showHistory
-                    ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                    ? "bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                    : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
                 }`}
               >
                 {showHistory ? "Hide History" : "Show History"}
@@ -225,7 +225,7 @@ const Orders = () => {
               
               <button
                 onClick={handleRemoveHistory}
-                className="px-4 py-2 bg-red-600 text-white rounded-full font-medium hover:bg-red-700 transition-all duration-300 flex items-center gap-2"
+                className="px-4 py-2 bg-red-500 text-white rounded-full font-medium hover:bg-red-600 transition-all duration-300 flex items-center gap-2"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -240,35 +240,35 @@ const Orders = () => {
         <div className="space-y-6">
           {orders.length === 0 ? (
             // Empty State - No orders at all
-            <div className="text-center py-16">
-              <svg className="w-32 h-32 text-gray-600 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center py-16 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200">
+              <svg className="w-32 h-32 text-[#9CA3AF] mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
               </svg>
-              <h3 className="text-2xl font-bold text-white mb-3">No Orders Yet</h3>
-              <p className="text-gray-400 text-lg mb-8">
+              <h3 className="text-2xl font-bold text-[#111827] mb-3">No Orders Yet</h3>
+              <p className="text-[#6B7280] text-lg mb-8">
                 Looks like you haven't placed any orders. Start shopping to see your orders here!
               </p>
               <button
                 onClick={() => navigate("/")}
-                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                className="px-8 py-3 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white font-semibold rounded-xl hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 transition-all duration-300 transform hover:scale-105"
               >
                 Browse Books
               </button>
             </div>
           ) : filteredOrders.length === 0 ? (
             // Empty State - No orders for current filters
-            <div className="text-center py-16">
-              <svg className="w-32 h-32 text-gray-600 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center py-16 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200">
+              <svg className="w-32 h-32 text-[#9CA3AF] mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
               </svg>
-              <h3 className="text-2xl font-bold text-white mb-3">No Orders Found</h3>
-              <p className="text-gray-400 text-lg mb-8">
+              <h3 className="text-2xl font-bold text-[#111827] mb-3">No Orders Found</h3>
+              <p className="text-[#6B7280] text-lg mb-8">
                 {showHistory ? "No orders in history." : "No active orders with the selected filter."}
               </p>
               {!showHistory && (
                 <button
                   onClick={() => setShowHistory(true)}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                  className="px-8 py-3 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white font-semibold rounded-xl hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 transition-all duration-300"
                 >
                   View History
                 </button>
@@ -278,22 +278,22 @@ const Orders = () => {
             filteredOrders.map((order) => (
               <div
                 key={order.id}
-                className="bg-gray-800 rounded-2xl shadow-xl border border-gray-700 overflow-hidden hover:shadow-2xl transition-all duration-300"
+                className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300"
               >
                 {/* Order Header */}
-                <div className="bg-gray-700/50 px-6 py-4 flex flex-wrap items-center justify-between border-b border-gray-600">
+                <div className="bg-gray-50/80 px-6 py-4 flex flex-wrap items-center justify-between border-b border-gray-200">
                   <div className="flex items-center space-x-4">
-                    <span className="text-sm font-mono text-gray-400">{order.id}</span>
-                    <span className="text-sm text-gray-400">{order.date}</span>
+                    <span className="text-sm font-mono text-[#6B7280]">{order.id}</span>
+                    <span className="text-sm text-[#6B7280]">{order.date}</span>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${getStatusColor(order.status)}`}>
                       {getStatusText(order.status)}
                     </span>
                   </div>
                   <div className="flex items-center space-x-4">
-                    <span className="text-white font-bold">₹{order.total}</span>
+                    <span className="text-[#111827] font-bold">₹{order.total}</span>
                     <button
                       onClick={() => handleViewDetails(order)}
-                      className="text-blue-400 hover:text-blue-300 transition-colors duration-300 text-sm"
+                      className="text-[#4F46E5] hover:text-[#4F46E5]/80 transition-colors duration-300 text-sm"
                     >
                       View Details
                     </button>
@@ -306,7 +306,7 @@ const Orders = () => {
                     {order.items.map((item, index) => (
                       <div 
                         key={index} 
-                        className={`flex items-center space-x-4 border-b border-gray-700/50 pb-4 last:border-0 ${
+                        className={`flex items-center space-x-4 border-b border-gray-200 pb-4 last:border-0 ${
                           item.status === "cancelled" ? "opacity-60" : ""
                         }`}
                       >
@@ -316,24 +316,24 @@ const Orders = () => {
                           className="w-16 h-20 object-cover rounded-lg"
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiMxRjIxMjUiIHJ4PSIxMCIvPjxwYXRoIGQ9Ik0zMCAzNUMyNy4yNCAzNSAyNSAzMi43NiAyNSAzMEMyNSAyNy4yNCAyNy4yNCAyNSAzMCAyNUMzMi43NiAyNSAzNSAyNy4yNCMzNSAzMEMzNSAzMy43NiAzMi43NiAzNSAzMCAzNVpNNDAgNTBDNDAgNTEuMSAzOS4xIDUyIDM4IDUySDIyQzIwLjkgNTIgMjAgNTEuMSAyMCA1MFY0MkwyNyAzNUw0MCA0Ni41VjUwWiIgZmlsbD0iIzhDQ0NEQiIvPjwvc3ZnPg==";
+                            e.target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxwYXRoIGQ9Ik0zMCAzNUMyNy4yNCAzNSAyNSAzMi43NiAyNSAzMEMyNSAyNy4yNCAyNy4yNCAyNSAzMCAyNUMzMi43NiAyNSAzNSAyNy4yNCMzNSAzMEMzNSAzMy43NiAzMi43NiAzNSAzMCAzNVpNNDAgNTBDNDAgNTEuMSAzOS4xIDUyIDM4IDUySDIyQzIwLjkgNTIgMjAgNTEuMSAyMCA1MFY0MkwyNyAzNUw0MCA0Ni41VjUwWiIgZmlsbD0iIzhDQ0NEQiIvPjwvc3ZnPg==";
                           }}
                         />
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
                             <div>
-                              <h4 className={`text-white font-medium ${item.status === "cancelled" ? "line-through text-gray-400" : ""}`}>
+                              <h4 className={`text-[#111827] font-medium ${item.status === "cancelled" ? "line-through text-[#6B7280]" : ""}`}>
                                 {item.title}
                               </h4>
-                              <p className="text-sm text-gray-400">{item.author}</p>
-                              <p className="text-sm text-gray-400">Quantity: {item.quantity}</p>
-                              <p className="text-sm text-gray-400">Price: ₹{item.price} each</p>
+                              <p className="text-sm text-[#6B7280]">{item.author}</p>
+                              <p className="text-sm text-[#6B7280]">Quantity: {item.quantity}</p>
+                              <p className="text-sm text-[#6B7280]">Price: ₹{item.price} each</p>
                               {item.status === "cancelled" && item.cancelledAt && (
-                                <p className="text-xs text-red-400 mt-1">Cancelled on: {item.cancelledAt}</p>
+                                <p className="text-xs text-red-600 mt-1">Cancelled on: {item.cancelledAt}</p>
                               )}
                             </div>
                             <div className="text-right">
-                              <p className={`text-white font-medium mb-2 ${item.status === "cancelled" ? "line-through text-gray-400" : ""}`}>
+                              <p className={`text-[#111827] font-medium mb-2 ${item.status === "cancelled" ? "line-through text-[#6B7280]" : ""}`}>
                                 ₹{item.price * item.quantity}
                               </p>
                               
@@ -349,14 +349,14 @@ const Orders = () => {
                                     });
                                     setShowCancelModal(true);
                                   }}
-                                  className="px-3 py-1 bg-red-600/20 text-red-400 rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 text-xs font-medium"
+                                  className="px-3 py-1 bg-red-500/10 text-red-600 rounded-lg hover:bg-red-500 hover:text-white transition-all duration-300 text-xs font-medium"
                                 >
                                   Cancel Item
                                 </button>
                               )}
                               
                               {item.status === "cancelled" && (
-                                <span className="px-3 py-1 bg-red-500/20 text-red-400 rounded-lg text-xs font-medium">
+                                <span className="px-3 py-1 bg-red-500/10 text-red-600 rounded-lg text-xs font-medium">
                                   Cancelled
                                 </span>
                               )}
@@ -375,14 +375,14 @@ const Orders = () => {
 
       {/* Order Details Modal */}
       {selectedOrder && !showCancelModal && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
-          <div className="bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold text-white">Order Details</h3>
+                <h3 className="text-xl font-bold text-[#111827]">Order Details</h3>
                 <button
                   onClick={() => setSelectedOrder(null)}
-                  className="text-gray-400 hover:text-white transition-colors duration-300"
+                  className="text-[#6B7280] hover:text-[#111827] transition-colors duration-300"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -391,30 +391,30 @@ const Orders = () => {
               </div>
 
               <div className="space-y-4">
-                <div className="bg-gray-700/50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-400">Order ID: <span className="text-white font-mono">{selectedOrder.id}</span></p>
-                  <p className="text-sm text-gray-400">Date: <span className="text-white">{selectedOrder.date}</span></p>
-                  <p className="text-sm text-gray-400">Status: <span className={`text-${getStatusColor(selectedOrder.status)}-400`}>{getStatusText(selectedOrder.status)}</span></p>
-                  <p className="text-sm text-gray-400">Payment Method: <span className="text-white">{selectedOrder.paymentMethod}</span></p>
+                <div className="bg-gray-50/80 p-4 rounded-lg border border-gray-200">
+                  <p className="text-sm text-[#6B7280]">Order ID: <span className="text-[#111827] font-mono">{selectedOrder.id}</span></p>
+                  <p className="text-sm text-[#6B7280]">Date: <span className="text-[#111827]">{selectedOrder.date}</span></p>
+                  <p className="text-sm text-[#6B7280]">Status: <span className={`text-${getStatusColor(selectedOrder.status)}-600`}>{getStatusText(selectedOrder.status)}</span></p>
+                  <p className="text-sm text-[#6B7280]">Payment Method: <span className="text-[#111827]">{selectedOrder.paymentMethod}</span></p>
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Items</h4>
+                  <h4 className="text-lg font-semibold text-[#111827] mb-2">Items</h4>
                   <div className="space-y-3">
                     {selectedOrder.items.map((item, index) => (
-                      <div key={index} className={`flex items-center space-x-3 bg-gray-700/30 p-3 rounded-lg ${item.status === "cancelled" ? "opacity-60" : ""}`}>
+                      <div key={index} className={`flex items-center space-x-3 bg-gray-50/80 p-3 rounded-lg border border-gray-200 ${item.status === "cancelled" ? "opacity-60" : ""}`}>
                         <img src={item.image} alt={item.title} className="w-12 h-16 object-cover rounded" />
                         <div className="flex-1">
-                          <p className={`text-white font-medium ${item.status === "cancelled" ? "line-through text-gray-400" : ""}`}>
+                          <p className={`text-[#111827] font-medium ${item.status === "cancelled" ? "line-through text-[#6B7280]" : ""}`}>
                             {item.title}
                           </p>
-                          <p className="text-sm text-gray-400">{item.author}</p>
-                          <p className="text-sm text-gray-400">Qty: {item.quantity}</p>
+                          <p className="text-sm text-[#6B7280]">{item.author}</p>
+                          <p className="text-sm text-[#6B7280]">Qty: {item.quantity}</p>
                           {item.status === "cancelled" && (
-                            <p className="text-xs text-red-400">Cancelled</p>
+                            <p className="text-xs text-red-600">Cancelled</p>
                           )}
                         </div>
-                        <p className={`text-white font-medium ${item.status === "cancelled" ? "line-through text-gray-400" : ""}`}>
+                        <p className={`text-[#111827] font-medium ${item.status === "cancelled" ? "line-through text-[#6B7280]" : ""}`}>
                           ₹{item.price * item.quantity}
                         </p>
                       </div>
@@ -422,31 +422,31 @@ const Orders = () => {
                   </div>
                 </div>
 
-                <div className="bg-gray-700/50 p-4 rounded-lg">
-                  <h4 className="text-lg font-semibold text-white mb-2">Shipping Address</h4>
-                  <p className="text-gray-300">{selectedOrder.shippingAddress.name}</p>
-                  <p className="text-gray-300">{selectedOrder.shippingAddress.street}</p>
+                <div className="bg-gray-50/80 p-4 rounded-lg border border-gray-200">
+                  <h4 className="text-lg font-semibold text-[#111827] mb-2">Shipping Address</h4>
+                  <p className="text-[#6B7280]">{selectedOrder.shippingAddress.name}</p>
+                  <p className="text-[#6B7280]">{selectedOrder.shippingAddress.street}</p>
                   {selectedOrder.shippingAddress.street2 && (
-                    <p className="text-gray-300">{selectedOrder.shippingAddress.street2}</p>
+                    <p className="text-[#6B7280]">{selectedOrder.shippingAddress.street2}</p>
                   )}
-                  <p className="text-gray-300">{selectedOrder.shippingAddress.city}, {selectedOrder.shippingAddress.state} - {selectedOrder.shippingAddress.pincode}</p>
-                  <p className="text-gray-300">Phone: {selectedOrder.shippingAddress.phone}</p>
+                  <p className="text-[#6B7280]">{selectedOrder.shippingAddress.city}, {selectedOrder.shippingAddress.state} - {selectedOrder.shippingAddress.pincode}</p>
+                  <p className="text-[#6B7280]">Phone: {selectedOrder.shippingAddress.phone}</p>
                 </div>
 
-                <div className="border-t border-gray-700 pt-4">
+                <div className="border-t border-gray-200 pt-4">
                   <div className="space-y-2">
-                    <div className="flex justify-between text-gray-300">
+                    <div className="flex justify-between text-[#6B7280]">
                       <span>Subtotal:</span>
                       <span>₹{selectedOrder.subtotal}</span>
                     </div>
-                    <div className="flex justify-between text-gray-300">
+                    <div className="flex justify-between text-[#6B7280]">
                       <span>Shipping:</span>
-                      <span className={selectedOrder.shippingFee === 0 ? "text-green-400" : ""}>
+                      <span className={selectedOrder.shippingFee === 0 ? "text-green-600" : ""}>
                         {selectedOrder.shippingFee === 0 ? "FREE" : `₹${selectedOrder.shippingFee}`}
                       </span>
                     </div>
                     {selectedOrder.discount > 0 && (
-                      <div className="flex justify-between text-green-400">
+                      <div className="flex justify-between text-green-600">
                         <span>Discount:</span>
                         <span>-₹{selectedOrder.discount}</span>
                       </div>
@@ -454,9 +454,9 @@ const Orders = () => {
                   </div>
                 </div>
 
-                <div className="border-t border-gray-700 pt-4 flex justify-between">
-                  <span className="text-lg font-bold text-white">Total Amount</span>
-                  <span className="text-lg font-bold text-blue-400">₹{selectedOrder.total}</span>
+                <div className="border-t border-gray-200 pt-4 flex justify-between">
+                  <span className="text-lg font-bold text-[#111827]">Total Amount</span>
+                  <span className="text-lg font-bold text-[#4F46E5]">₹{selectedOrder.total}</span>
                 </div>
               </div>
             </div>
@@ -466,17 +466,17 @@ const Orders = () => {
 
       {/* Cancel Item Confirmation Modal */}
       {showCancelModal && selectedItemForCancel && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
-          <div className="bg-gray-800 rounded-2xl max-w-md w-full p-6">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6">
             <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/20 mb-4">
-                <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mb-4">
+                <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Cancel Item?</h3>
-              <p className="text-gray-400">
-                Are you sure you want to cancel <span className="text-white font-semibold">"{selectedItemForCancel.itemTitle}"</span>? 
+              <h3 className="text-xl font-bold text-[#111827] mb-2">Cancel Item?</h3>
+              <p className="text-[#6B7280]">
+                Are you sure you want to cancel <span className="text-[#111827] font-semibold">"{selectedItemForCancel.itemTitle}"</span>? 
                 This item will be marked as cancelled and removed from your active orders.
               </p>
             </div>
@@ -494,7 +494,7 @@ const Orders = () => {
                   setSelectedItemForCancel(null);
                   setSelectedOrder(null);
                 }}
-                className="flex-1 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-all duration-300"
+                className="flex-1 px-4 py-2 bg-gray-200 text-[#6B7280] rounded-lg hover:bg-gray-300 transition-all duration-300"
               >
                 No, Keep it
               </button>

@@ -1,3 +1,4 @@
+// Card.jsx - Light Mode Version
 import React, { useState } from "react";
 
 const Card = ({ 
@@ -47,7 +48,7 @@ const Card = ({
 
     const notification = document.createElement("div");
     notification.className =
-      "cart-notification fixed top-4 right-4 z-50 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-lg shadow-xl animate-bounce";
+      "cart-notification fixed top-4 right-4 z-50 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white px-6 py-3 rounded-lg shadow-xl animate-bounce";
     notification.innerHTML = `
       <div class="flex items-center">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,7 +100,7 @@ const Card = ({
         );
       } else {
         stars.push(
-          <svg key={i} className="w-4 h-4 fill-current text-gray-400" viewBox="0 0 20 20">
+          <svg key={i} className="w-4 h-4 fill-current text-gray-300" viewBox="0 0 20 20">
             <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
           </svg>
         );
@@ -109,7 +110,7 @@ const Card = ({
   };
 
   return (
-    <div className="w-72 bg-[#1E293B] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 m-4 overflow-hidden border border-blue-500 relative">
+    <div className="w-72 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 m-4 overflow-hidden border border-gray-200 relative">
       {/* Best Seller Badge */}
       {bestSeller && (
         <div className="absolute top-4 left-4 z-10">
@@ -119,7 +120,7 @@ const Card = ({
         </div>
       )}
 
-      <div className="h-48 bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center p-6">
+      <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-6">
         <img
           className="object-contain w-full h-44"
           src={imageUrl}
@@ -127,7 +128,7 @@ const Card = ({
           onError={(e) => {
             e.target.onerror = null;
             e.target.src =
-              "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiMxRjIxMjUiIHJ4PSIxMCIvPjxwYXRoIGQ9Ik0zMCAzNUMyNy4yNCAzNSAyNSAzMi43NiAyNSAzMEMyNSAyNy4yNCAyNy4yNCAyNSAzMCAyNUMzMi43NiAyNSAzNSAyNy4yNCMzNSAzMEMzNSAzMy43NiAzMi43NiAzNSAzMCAzNVpNNDAgNTBDNDAgNTEuMSAzOS4xIDUyIDM4IDUySDIyQzIwLjkgNTIgMjAgNTEuMSAyMCA1MFY0MkwyNyAzNUw0MCA0Ni41VjUwWiIgZmlsbD0iIzhDQ0NEQiIvPjwvc3ZnPg==";
+              "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxwYXRoIGQ9Ik0zMCAzNUMyNy4yNCAzNSAyNSAzMi43NiAyNSAzMEMyNSAyNy4yNCAyNy4yNCAyNSAzMCAyNUMzMi43NiAyNSAzNSAyNy4yNCMzNSAzMEMzNSAzMy43NiAzMi43NiAzNSAzMCAzNVpNNDAgNTBDNDAgNTEuMSAzOS4xIDUyIDM4IDUySDIyQzIwLjkgNTIgMjAgNTEuMSAyMCA1MFY0MkwyNyAzNUw0MCA0Ni41VjUwWiIgZmlsbD0iIzhDQ0NEQiIvPjwvc3ZnPg==";
           }}
         />
       </div>
@@ -135,32 +136,32 @@ const Card = ({
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <h3 className="text-xl font-bold text-[#E2E8F0]">{title}</h3>
+            <h3 className="text-xl font-bold text-[#111827]">{title}</h3>
             <div className="flex items-center mt-1">
-              <span className="text-sm text-[#C5C6C7]">Programming Book</span>
-              <span className="mx-2 text-gray-600">•</span>
-              <div className="text-xs px-2 py-1 bg-blue-600/20 text-blue-400 font-medium rounded-full border border-blue-600/30">
+              <span className="text-sm text-[#6B7280]">Programming Book</span>
+              <span className="mx-2 text-gray-400">•</span>
+              <div className="text-xs px-2 py-1 bg-[#4F46E5]/10 text-[#4F46E5] font-medium rounded-full border border-[#4F46E5]/20">
                 {rating >= 4.5 ? "Top Rated" : rating >= 4 ? "Best Rated" : "Popular"}
               </div>
             </div>
           </div>
           <div className="text-right">
-            <div className="text-2xl font-bold text-[#22D3EE]">₹{price}</div>
-            <div className="text-sm text-[#94A3B8] line-through">
+            <div className="text-2xl font-bold text-[#4F46E5]">₹{price}</div>
+            <div className="text-sm text-[#9CA3AF] line-through">
               ₹{(price * 1.5).toFixed(0)}
             </div>
           </div>
         </div>
 
-        <p className="text-[#94A3B8] text-sm mb-6 line-clamp-3">{description}</p>
+        <p className="text-[#6B7280] text-sm mb-6 line-clamp-3">{description}</p>
 
         <div className="flex items-center mb-6">
           <div className="flex">
             {renderStars()}
           </div>
-          <span className="ml-2 text-sm text-[#94A3B8]">({rating.toFixed(1)}/5)</span>
-          <span className="mx-2 text-gray-600">•</span>
-          <span className="text-sm text-[#94A3B8]">{Math.floor(Math.random() * 200) + 300} pages</span>
+          <span className="ml-2 text-sm text-[#6B7280]">({rating.toFixed(1)}/5)</span>
+          <span className="mx-2 text-gray-400">•</span>
+          <span className="text-sm text-[#6B7280]">{Math.floor(Math.random() * 200) + 300} pages</span>
         </div>
 
         <div className="flex space-x-3">
@@ -168,8 +169,8 @@ const Card = ({
             onClick={handleAddToCart}
             className={`flex-1 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl ${
               isAdded
-                ? "bg-gradient-to-r from-green-600 to-emerald-700 text-white transform scale-95"
-                : "bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900"
+                ? "bg-gradient-to-r from-green-500 to-green-600 text-white transform scale-95"
+                : "bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90"
             }`}
           >
             {isAdded ? "✓ Added to Cart!" : "Add to Cart"}
@@ -177,7 +178,7 @@ const Card = ({
         </div>
       </div>
 
-      <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+      <div className="absolute top-4 right-4 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
         33% OFF
       </div>
     </div>

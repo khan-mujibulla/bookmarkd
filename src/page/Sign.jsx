@@ -72,12 +72,13 @@ const Sign = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative">
+    <div className="relative min-h-screen bg-[#F5F6FA] overflow-hidden">
+      {/* Animated background elements - same as HeroSections */}
       <div className="absolute inset-0">
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10"
+            className="absolute rounded-full bg-gradient-to-r from-[#4F46E5]/20 to-[#4F46E5]/10"
             style={{
               width: `${Math.random() * 40 + 10}px`,
               height: `${Math.random() * 40 + 10}px`,
@@ -89,17 +90,17 @@ const Sign = () => {
         ))}
 
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                              linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #4F46E5 1px, transparent 1px),
+                              linear-gradient(to bottom, #4F46E5 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
 
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4F46E5]/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 min-h-screen flex items-center justify-center px-4 py-12">
@@ -107,19 +108,19 @@ const Sign = () => {
           <div className="text-center mb-8 animate-fade-in">
             <div className="inline-flex items-center justify-center mb-4">
               <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
-                <div className="relative bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-3 rounded-full">
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                <div className="relative bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white p-3 rounded-full">
                   {/* Add your logo here if needed */}
                 </div>
               </div>
-              <Link to="/" className="ml-3 text-2xl font-bold text-white">
-                BOOK<span className="text-cyan-300">MARK'D</span>
+              <Link to="/" className="ml-3 text-2xl font-bold text-[#111827]">
+                BOOK<span className="text-[#4F46E5]">MARK'D</span>
               </Link>
             </div>
-            <h1 className="text-3xl font-bold text-white mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+            <h1 className="text-3xl font-bold text-[#111827] mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#4F46E5] to-[#818CF8]">
               Create Your Account
             </h1>
-            <p className="text-gray-400">
+            <p className="text-[#6B7280]">
               Join our developer community and access thousands of programming
               books
             </p>
@@ -128,18 +129,18 @@ const Sign = () => {
           <div className="animate-slide-up">
             <form
               onSubmit={handleSubmit}
-              className="bg-gray-900/60 backdrop-blur-xl rounded-2xl p-8 border border-gray-700/50 shadow-2xl"
+              className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-200 shadow-sm"
             >
               <div className="mb-6">
-                <label className="block text-gray-300 text-sm font-medium mb-3">
+                <label className="block text-[#6B7280] text-sm font-medium mb-3">
                   Email Address
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <img
-                      src="https://img.icons8.com/ios/50/FFFFFF/new-post.png"
+                      src="https://img.icons8.com/ios/50/6B7280/new-post.png"
                       alt="Email"
-                      className="w-5 h-5 text-gray-400"
+                      className="w-5 h-5 opacity-70"
                     />
                   </div>
                   <input
@@ -147,7 +148,7 @@ const Sign = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-300 hover:border-gray-500"
+                    className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#4F46E5] focus:ring-2 focus:ring-[#4F46E5]/30 transition-all duration-300 hover:border-gray-300"
                     placeholder="you@example.com"
                     required
                   />
@@ -155,15 +156,15 @@ const Sign = () => {
               </div>
 
               <div className="mb-6">
-                <label className="block text-gray-300 text-sm font-medium mb-3">
+                <label className="block text-[#6B7280] text-sm font-medium mb-3">
                   Username
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <img
-                      src="https://img.icons8.com/ios/50/FFFFFF/user--v1.png"
+                      src="https://img.icons8.com/ios/50/6B7280/user--v1.png"
                       alt="Username"
-                      className="w-5 h-5 text-gray-400"
+                      className="w-5 h-5 opacity-70"
                     />
                   </div>
                   <input
@@ -171,7 +172,7 @@ const Sign = () => {
                     name="username"
                     value={formData.username}
                     onChange={handleChange}
-                    className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-300 hover:border-gray-500"
+                    className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#4F46E5] focus:ring-2 focus:ring-[#4F46E5]/30 transition-all duration-300 hover:border-gray-300"
                     placeholder="Choose a username"
                     required
                   />
@@ -179,15 +180,15 @@ const Sign = () => {
               </div>
 
               <div className="mb-6">
-                <label className="block text-gray-300 text-sm font-medium mb-3">
+                <label className="block text-[#6B7280] text-sm font-medium mb-3">
                   Password
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <img
-                      src="https://img.icons8.com/ios/50/FFFFFF/lock--v1.png"
+                      src="https://img.icons8.com/ios/50/6B7280/lock--v1.png"
                       alt="Password"
-                      className="w-5 h-5 text-gray-400"
+                      className="w-5 h-5 opacity-70"
                     />
                   </div>
                   <input
@@ -195,7 +196,7 @@ const Sign = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-300 hover:border-gray-500"
+                    className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#4F46E5] focus:ring-2 focus:ring-[#4F46E5]/30 transition-all duration-300 hover:border-gray-300"
                     placeholder="Create a secure password"
                     required
                   />
@@ -203,15 +204,15 @@ const Sign = () => {
               </div>
 
               <div className="mb-8">
-                <label className="block text-gray-300 text-sm font-medium mb-3">
+                <label className="block text-[#6B7280] text-sm font-medium mb-3">
                   Confirm Password
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <img
-                      src="https://img.icons8.com/ios/50/FFFFFF/lock--v1.png"
+                      src="https://img.icons8.com/ios/50/6B7280/lock--v1.png"
                       alt="Confirm Password"
-                      className="w-5 h-5 text-gray-400"
+                      className="w-5 h-5 opacity-70"
                     />
                   </div>
                   <input
@@ -219,7 +220,7 @@ const Sign = () => {
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-300 hover:border-gray-500"
+                    className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] placeholder-[#9CA3AF] focus:outline-none focus:border-[#4F46E5] focus:ring-2 focus:ring-[#4F46E5]/30 transition-all duration-300 hover:border-gray-300"
                     placeholder="Confirm your password"
                     required
                   />
@@ -229,10 +230,10 @@ const Sign = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-4 rounded-xl font-medium text-white transition-all duration-300 mb-6 shadow-lg ${
+                className={`w-full py-4 rounded-xl font-medium text-white transition-all duration-300 mb-6 shadow-md ${
                   isSubmitting
-                    ? "bg-blue-800 cursor-not-allowed"
-                    : "bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
+                    ? "bg-[#818CF8] cursor-not-allowed"
+                    : "bg-gradient-to-r from-[#4F46E5] to-[#818CF8] hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
                 }`}
               >
                 {isSubmitting ? (
@@ -247,10 +248,10 @@ const Sign = () => {
 
               <div className="relative mb-6">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-600/50"></div>
+                  <div className="w-full border-t border-gray-200"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-3 bg-gray-900/60 text-gray-400">
+                  <span className="px-3 bg-white/80 text-[#6B7280]">
                     Or sign up with
                   </span>
                 </div>
@@ -260,7 +261,7 @@ const Sign = () => {
                 <button
                   type="button"
                   onClick={handleGoogleLogin}
-                  className="w-full py-3 bg-gray-800/50 backdrop-blur-sm border border-gray-600 rounded-xl text-white hover:bg-gray-700/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
+                  className="w-full py-3 bg-white backdrop-blur-sm border border-gray-200 rounded-xl text-[#111827] hover:bg-gray-50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 shadow-sm"
                 >
                   <img
                     src="https://img.icons8.com/color/48/000000/google-logo.png"
@@ -273,10 +274,10 @@ const Sign = () => {
                 <button
                   type="button"
                   onClick={handleGitHubLogin}
-                  className="w-full py-3 bg-gray-800/50 backdrop-blur-sm border border-gray-600 rounded-xl text-white hover:bg-gray-700/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3"
+                  className="w-full py-3 bg-white backdrop-blur-sm border border-gray-200 rounded-xl text-[#111827] hover:bg-gray-50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 shadow-sm"
                 >
                   <img
-                    src="https://img.icons8.com/ios-filled/50/FFFFFF/github.png"
+                    src="https://img.icons8.com/ios-filled/50/000000/github.png"
                     alt="GitHub"
                     className="w-5 h-5"
                   />
@@ -286,11 +287,11 @@ const Sign = () => {
 
               {/* Login Link - Moved after both buttons */}
               <div className="text-center mt-2 mb-2">
-                <p className="text-gray-400">
+                <p className="text-[#6B7280]">
                   Already have an account?{" "}
                   <Link
                     to="/Loginpage"
-                    className="text-cyan-400 hover:text-cyan-300 font-medium hover:underline transition-all duration-300"
+                    className="text-[#4F46E5] hover:text-[#4F46E5]/80 font-medium hover:underline transition-all duration-300"
                   >
                     Login here
                   </Link>
@@ -300,18 +301,18 @@ const Sign = () => {
           </div>
 
           <div className="mt-8 text-center animate-fade-in-delay">
-            <p className="text-gray-500 text-sm">
+            <p className="text-[#9CA3AF] text-sm">
               By signing up, you agree to our{" "}
               <a
                 href="#"
-                className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors"
+                className="text-[#4F46E5] hover:text-[#4F46E5]/80 hover:underline transition-colors"
               >
                 Terms
               </a>{" "}
               and{" "}
               <a
                 href="#"
-                className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors"
+                className="text-[#4F46E5] hover:text-[#4F46E5]/80 hover:underline transition-colors"
               >
                 Privacy Policy
               </a>

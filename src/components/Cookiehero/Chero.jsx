@@ -9,13 +9,12 @@ const Chero = () => {
   }, []);
 
   return (
-    <div className="relative min-h-[90vh] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-      {/* Same Background as Privacy Page */}
+    <div className="relative min-h-[90vh] bg-gradient-to-br from-white via-gray-50 to-white overflow-hidden">
       <div className="absolute inset-0">
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"
+            className="absolute rounded-full bg-gradient-to-r from-[#F59E0B]/20 to-[#F59E0B]/10"
             style={{
               width: `${Math.random() * 40 + 10}px`,
               height: `${Math.random() * 40 + 10}px`,
@@ -27,16 +26,16 @@ const Chero = () => {
         ))}
 
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                              linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #F59E0B 1px, transparent 1px),
+                              linear-gradient(to bottom, #F59E0B 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
 
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#F59E0B]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#F59E0B]/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 w-full h-full flex items-center">
@@ -44,7 +43,7 @@ const Chero = () => {
           <div className="max-w-4xl mx-auto text-center">
             <Link
               to="/"
-              className={`inline-flex items-center text-gray-400 hover:text-white mb-12 transition-all duration-1000 ${
+              className={`inline-flex items-center text-gray-500 hover:text-[#F59E0B] mb-12 transition-all duration-1000 ${
                 mounted
                   ? "translate-y-0 opacity-100"
                   : "-translate-y-10 opacity-0"
@@ -73,7 +72,7 @@ const Chero = () => {
               }`}
             >
               <div className="flex justify-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center shadow-2xl">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#F59E0B] to-[#F59E0B]/80 rounded-2xl flex items-center justify-center shadow-xl">
                   <svg
                     className="w-10 h-10 text-white"
                     fill="currentColor"
@@ -84,11 +83,11 @@ const Chero = () => {
                 </div>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-bold text-white">
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900">
                 Cookie Policy
               </h1>
 
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                 We use cookies to improve your browsing experience and provide
                 personalized services. Learn about how we use cookies on our
                 website.
@@ -96,25 +95,25 @@ const Chero = () => {
 
               <div className="flex flex-wrap justify-center gap-8 pt-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white">Essential</div>
-                  <div className="text-sm text-amber-300 mt-1">Required</div>
+                  <div className="text-3xl font-bold text-[#F59E0B]">Essential</div>
+                  <div className="text-sm text-gray-500 mt-1">Required</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white">
+                  <div className="text-3xl font-bold text-[#F59E0B]">
                     Functional
                   </div>
-                  <div className="text-sm text-amber-300 mt-1">Optional</div>
+                  <div className="text-sm text-gray-500 mt-1">Optional</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white">Analytics</div>
-                  <div className="text-sm text-amber-300 mt-1">Optional</div>
+                  <div className="text-3xl font-bold text-[#F59E0B]">Analytics</div>
+                  <div className="text-sm text-gray-500 mt-1">Optional</div>
                 </div>
               </div>
 
               <div className="pt-8">
                 <a
                   href="#cookie-content"
-                  className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-amber-300 rounded-xl hover:bg-white/20 transition-all duration-300"
+                  className="inline-flex items-center px-8 py-4 bg-white border border-gray-200 text-[#F59E0B] rounded-xl hover:bg-gray-50 transition-all duration-300 shadow-sm"
                 >
                   <span>Read Cookie Policy</span>
                   <svg
@@ -142,8 +141,8 @@ const Chero = () => {
           mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-white/40 rounded-full mt-2 animate-bounce"></div>
+        <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-[#F59E0B] rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+// Cards.jsx - Light Mode Version
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
@@ -40,7 +41,7 @@ const Cards = () => {
     setActiveSection(section);
   };
 
-  // Books data with categories and ratings
+  // Books data with categories and ratings (SAME CONTENT)
   const allCourses = [
     // Frontend Books
     {
@@ -241,7 +242,7 @@ const Cards = () => {
       rating: 4.6,
     },
 
-    // Data Science & Visualization Books (New Section)
+    // Data Science & Visualization Books
     {
       id: 18,
       title: "Data Visualization",
@@ -277,7 +278,7 @@ const Cards = () => {
     },
     {
       id: 21,
-      title: "Machine Learning",
+      title: "MachineLearning",
       description:
         "Complete ML guide covering supervised/unsupervised learning, deep learning, TensorFlow, PyTorch, and real-world projects.",
       price: 1399,
@@ -398,17 +399,17 @@ const Cards = () => {
     .section-title {
       font-size: 2rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #4F46E5 0%, #818CF8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 1.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 3px solid #22D3EE;
+      border-bottom: 3px solid #4F46E5;
       display: inline-block;
     }
     
     .active-tab {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #4F46E5 0%, #818CF8 100%);
       color: white;
       transform: scale(1.05);
     }
@@ -453,12 +454,12 @@ const Cards = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#2D4059] px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto mb-12 text-center">
-        <h1 className="text-4xl font-bold text-white mb-4 animate-fadeIn">
+        <h1 className="text-4xl font-bold text-[#111827] mb-4 animate-fadeIn bg-clip-text text-transparent bg-gradient-to-r from-[#4F46E5] to-[#4F46E5]">
           Programming Books Store
         </h1>
-        <p className="text-white text-lg max-w-3xl mx-auto animate-fadeIn">
+        <p className="text-[#6B7280] text-lg max-w-3xl mx-auto animate-fadeIn">
           Discover the best programming books covering all major technologies
           and frameworks. From beginner guides to advanced references, we have
           everything you need for your coding journey.
@@ -470,8 +471,8 @@ const Cards = () => {
             onClick={() => handleSectionChange("all")}
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
               activeSection === "all"
-                ? "active-tab bg-gradient-to-r from-blue-600 to-cyan-600 text-white"
-                : "bg-[#1E293B] text-white hover:bg-[#2D3748]"
+                ? "active-tab bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
             }`}
           >
             All Books ({allCourses.length})
@@ -480,8 +481,8 @@ const Cards = () => {
             onClick={() => handleSectionChange("frontend")}
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
               activeSection === "frontend"
-                ? "active-tab bg-gradient-to-r from-blue-600 to-cyan-600 text-white"
-                : "bg-[#1E293B] text-white hover:bg-[#2D3748]"
+                ? "active-tab bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
             }`}
           >
             Frontend ({frontendBooks.length})
@@ -490,8 +491,8 @@ const Cards = () => {
             onClick={() => handleSectionChange("backend")}
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
               activeSection === "backend"
-                ? "active-tab bg-gradient-to-r from-blue-600 to-cyan-600 text-white"
-                : "bg-[#1E293B] text-white hover:bg-[#2D3748]"
+                ? "active-tab bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
             }`}
           >
             Backend ({backendBooks.length})
@@ -500,8 +501,8 @@ const Cards = () => {
             onClick={() => handleSectionChange("framework")}
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
               activeSection === "framework"
-                ? "active-tab bg-gradient-to-r from-blue-600 to-cyan-600 text-white"
-                : "bg-[#1E293B] text-white hover:bg-[#2D3748]"
+                ? "active-tab bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
             }`}
           >
             Framework ({frameworkBooks.length})
@@ -510,8 +511,8 @@ const Cards = () => {
             onClick={() => handleSectionChange("database")}
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
               activeSection === "database"
-                ? "active-tab bg-gradient-to-r from-blue-600 to-cyan-600 text-white"
-                : "bg-[#1E293B] text-white hover:bg-[#2D3748]"
+                ? "active-tab bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
             }`}
           >
             Database ({databaseBooks.length})
@@ -520,8 +521,8 @@ const Cards = () => {
             onClick={() => handleSectionChange("datascience")}
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
               activeSection === "datascience"
-                ? "active-tab bg-gradient-to-r from-blue-600 to-cyan-600 text-white"
-                : "bg-[#1E293B] text-white hover:bg-[#2D3748]"
+                ? "active-tab bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
             }`}
           >
             Data Science ({datascienceBooks.length})
@@ -530,8 +531,8 @@ const Cards = () => {
             onClick={() => handleSectionChange("theoretical")}
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
               activeSection === "theoretical"
-                ? "active-tab bg-gradient-to-r from-blue-600 to-cyan-600 text-white"
-                : "bg-[#1E293B] text-white hover:bg-[#2D3748]"
+                ? "active-tab bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white"
+                : "bg-white text-[#6B7280] hover:bg-gray-100 border border-gray-200 shadow-sm"
             }`}
           >
             Theoretical ({theoreticalBooks.length})
@@ -540,22 +541,22 @@ const Cards = () => {
 
         <div className="flex flex-wrap justify-center gap-8 mt-8">
           <div className="text-center animate-scaleIn">
-            <div className="text-3xl font-bold text-[#22D3EE]">20+</div>
-            <div className="text-[#94A3B8]">Technologies</div>
+            <div className="text-3xl font-bold text-[#4F46E5]">20+</div>
+            <div className="text-[#6B7280]">Technologies</div>
           </div>
           <div
             className="text-center animate-scaleIn"
             style={{ animationDelay: "0.1s" }}
           >
-            <div className="text-3xl font-bold text-[#22D3EE]">500+</div>
-            <div className="text-[#94A3B8]">Chapters</div>
+            <div className="text-3xl font-bold text-[#4F46E5]">500+</div>
+            <div className="text-[#6B7280]">Chapters</div>
           </div>
           <div
             className="text-center animate-scaleIn"
             style={{ animationDelay: "0.3s" }}
           >
-            <div className="text-3xl font-bold text-[#22D3EE]">4★</div>
-            <div className="text-[#94A3B8]">Avg Rating</div>
+            <div className="text-3xl font-bold text-[#4F46E5]">4★</div>
+            <div className="text-[#6B7280]">Avg Rating</div>
           </div>
         </div>
       </div>
@@ -563,16 +564,16 @@ const Cards = () => {
       <div className="max-w-7xl mx-auto">
         {/* Cart Summary */}
         {cartItems.length > 0 && (
-          <div className="mb-6 p-4 bg-[#1E293B] rounded-lg border border-blue-500 animate-slideUp">
+          <div className="mb-6 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200 shadow-sm animate-slideUp">
             <div className="flex justify-between items-center">
-              <span className="text-white">
+              <span className="text-[#111827]">
                 🛒{" "}
                 {cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0)}{" "}
                 books in cart
               </span>
               <a
                 href="/AddtoCart"
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-200 hover:scale-105"
+                className="bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white px-4 py-2 rounded-lg hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 transition-all duration-200 hover:scale-105 shadow-md"
               >
                 View Cart
               </a>
@@ -641,7 +642,7 @@ const Cards = () => {
         )}
 
         <div className="mt-8 text-center">
-          <p className="text-[#94A3B8] text-sm">
+          <p className="text-[#6B7280] text-sm">
             Total {allCourses.length} programming books available across 6
             categories
           </p>

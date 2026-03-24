@@ -42,54 +42,55 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative">
-      {/* Floating Particles - Same as your login page */}
+    <div className="relative min-h-screen bg-[#F5F6FA] overflow-hidden">
+      {/* Floating Particles - Same as login page */}
       <div className="absolute inset-0">
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10"
+            className="absolute rounded-full bg-gradient-to-r from-[#4F46E5]/20 to-[#4F46E5]/10"
             style={{
               width: `${Math.random() * 40 + 10}px`,
               height: `${Math.random() * 40 + 10}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animation: `float ${Math.random() * 20 + 10}s infinite ease-in-out`,
+              animation: `float ${Math.random() * 20 + 10}s infinite ease-in-out ${Math.random() * 5}s`,
             }}
           />
         ))}
 
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                              linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #4F46E5 1px, transparent 1px),
+                              linear-gradient(to bottom, #4F46E5 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
 
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4F46E5]/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <form
           onSubmit={handleSubmit}
-          className={`flex flex-col gap-6 max-w-md w-full p-8 rounded-2xl relative bg-gray-900/60 backdrop-blur-xl text-white border border-gray-700/50 shadow-2xl transform transition-all duration-1000 ${
+          className={`flex flex-col gap-6 max-w-md w-full p-8 rounded-2xl relative bg-white/80 backdrop-blur-xl text-[#111827] border border-gray-200 shadow-sm transform transition-all duration-1000 ${
             mounted ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
           }`}
         >
           <div className="text-center mb-4">
-            <h1 className="text-4xl font-bold text-white">
-              BOOK<span className="text-blue-400">MARK'D</span>
+            <h1 className="text-4xl font-bold text-[#111827]">
+              BOOK<span className="text-[#4F46E5]">MARK'D</span>
             </h1>
-            <p className="text-xl font-semibold text-gray-300 mt-2">
+            <p className="text-xl font-semibold text-[#6B7280] mt-2">
               Admin Portal
             </p>
           </div>
 
           {error && (
-            <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg">
+            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
               {error}
             </div>
           )}
@@ -97,7 +98,7 @@ const AdminLogin = () => {
           <div className="relative">
             <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
               <svg
-                className="w-5 h-5 text-gray-400"
+                className="w-5 h-5 text-[#9CA3AF]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -111,7 +112,7 @@ const AdminLogin = () => {
               </svg>
             </div>
             <input
-              className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+              className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] focus:outline-none focus:border-[#4F46E5] focus:ring-1 focus:ring-[#4F46E5] transition-all duration-300 placeholder-[#9CA3AF]"
               type="text"
               name="username"
               value={formData.username}
@@ -124,7 +125,7 @@ const AdminLogin = () => {
           <div className="relative">
             <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
               <svg
-                className="w-5 h-5 text-gray-400"
+                className="w-5 h-5 text-[#9CA3AF]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -138,7 +139,7 @@ const AdminLogin = () => {
               </svg>
             </div>
             <input
-              className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+              className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] focus:outline-none focus:border-[#4F46E5] focus:ring-1 focus:ring-[#4F46E5] transition-all duration-300 placeholder-[#9CA3AF]"
               type="password"
               name="password"
               value={formData.password}
@@ -153,8 +154,8 @@ const AdminLogin = () => {
             disabled={isSubmitting}
             className={`mt-4 py-3 rounded-xl font-medium text-white transition-all duration-300 ${
               isSubmitting
-                ? "bg-blue-800 cursor-not-allowed"
-                : "bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 hover:shadow-lg hover:scale-[1.02]"
+                ? "bg-[#818CF8] cursor-not-allowed"
+                : "bg-gradient-to-r from-[#4F46E5] to-[#818CF8] hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
             }`}
           >
             {isSubmitting ? "Logging in..." : "Login to Admin Panel"}

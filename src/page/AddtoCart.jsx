@@ -41,7 +41,7 @@ const AddtoCart = () => {
   const [showPaymentSuccess, setShowPaymentSuccess] = useState(false);
   const [completedOrder, setCompletedOrder] = useState(null);
 
-  // Load cart from localStorage on mount and filter out cancelled items
+  // Load cart from localStorage on mount
   useEffect(() => {
     loadCart();
     
@@ -62,27 +62,32 @@ const AddtoCart = () => {
       try {
         const parsedCart = JSON.parse(savedCart);
         
-        // Get all orders to check for cancelled items
+        // Only filter out cancelled items if there are orders
+        // But don't filter if there are no orders or user is not logged in
         const orders = JSON.parse(localStorage.getItem("orders") || "[]");
         const currentUser = JSON.parse(localStorage.getItem("user") || "{}");
         
-        // Get all cancelled item IDs from user's orders
-        const cancelledItemIds = new Set();
-        orders.forEach(order => {
-          if (order.userEmail === currentUser.email) {
-            order.items.forEach(item => {
-              if (item.status === "cancelled") {
-                cancelledItemIds.add(item.id);
-              }
-            });
-          }
-        });
-        
-        // Filter out cancelled items from cart
-        const filteredCart = parsedCart.filter(item => !cancelledItemIds.has(item.id));
-        
-        setCartItems(filteredCart);
-        localStorage.setItem("bookCart", JSON.stringify(filteredCart));
+        // Only filter if we have orders AND a logged in user
+        if (orders.length > 0 && currentUser.email) {
+          // Get all cancelled item IDs from user's orders
+          const cancelledItemIds = new Set();
+          orders.forEach(order => {
+            if (order.userEmail === currentUser.email) {
+              order.items.forEach(item => {
+                if (item.status === "cancelled") {
+                  cancelledItemIds.add(item.id);
+                }
+              });
+            }
+          });
+          
+          // Filter out cancelled items from cart
+          const filteredCart = parsedCart.filter(item => !cancelledItemIds.has(item.id));
+          setCartItems(filteredCart);
+        } else {
+          // If no orders or no user, just set the cart as is
+          setCartItems(parsedCart);
+        }
       } catch (error) {
         console.error("Error loading cart from localStorage:", error);
         setCartItems([]);
@@ -388,29 +393,29 @@ const AddtoCart = () => {
     switch(checkoutStep) {
       case 'address':
         return (
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 mb-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Delivery Address</h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Delivery Address</h2>
             
             {/* Saved Addresses */}
             {savedAddresses.length > 0 && !showAddressForm && (
               <div className="mb-6">
-                <h3 className="text-lg font-semibold text-white mb-3">Saved Addresses</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Saved Addresses</h3>
                 <div className="space-y-3">
                   {savedAddresses.map((addr) => (
-                    <div key={addr.id} className="bg-gray-700/50 rounded-lg p-4 border border-gray-600">
+                    <div key={addr.id} className="bg-gray-50/80 rounded-lg p-4 border border-gray-200">
                       <div className="flex justify-between items-start">
                         <div>
-                          <p className="text-white font-medium">{addr.fullName}</p>
-                          <p className="text-gray-300 text-sm">{addr.addressLine1}</p>
-                          {addr.addressLine2 && <p className="text-gray-300 text-sm">{addr.addressLine2}</p>}
-                          <p className="text-gray-300 text-sm">{addr.city}, {addr.state} - {addr.pincode}</p>
-                          <p className="text-gray-300 text-sm">Phone: {addr.phone}</p>
-                          {addr.landmark && <p className="text-gray-300 text-sm">Landmark: {addr.landmark}</p>}
+                          <p className="text-gray-900 font-medium">{addr.fullName}</p>
+                          <p className="text-gray-600 text-sm">{addr.addressLine1}</p>
+                          {addr.addressLine2 && <p className="text-gray-600 text-sm">{addr.addressLine2}</p>}
+                          <p className="text-gray-600 text-sm">{addr.city}, {addr.state} - {addr.pincode}</p>
+                          <p className="text-gray-600 text-sm">Phone: {addr.phone}</p>
+                          {addr.landmark && <p className="text-gray-600 text-sm">Landmark: {addr.landmark}</p>}
                         </div>
                         <div className="flex space-x-2">
                           <button
                             onClick={() => selectSavedAddress(addr)}
-                            className="px-3 py-1 bg-cyan-600 text-white rounded-lg text-sm hover:bg-cyan-700"
+                            className="px-3 py-1 bg-[#4F46E5] text-white rounded-lg text-sm hover:bg-[#4F46E5]/90"
                           >
                             Select
                           </button>
@@ -420,7 +425,7 @@ const AddtoCart = () => {
                               setAddress(addr);
                               setShowAddressForm(true);
                             }}
-                            className="px-3 py-1 bg-gray-600 text-white rounded-lg text-sm hover:bg-gray-700"
+                            className="px-3 py-1 bg-gray-200 text-gray-700 rounded-lg text-sm hover:bg-gray-300"
                           >
                             Edit
                           </button>
@@ -435,7 +440,7 @@ const AddtoCart = () => {
             {!showAddressForm ? (
               <button
                 onClick={() => setShowAddressForm(true)}
-                className="w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg font-medium hover:from-cyan-700 hover:to-blue-700 transition-colors"
+                className="w-full py-3 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white rounded-lg font-medium hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 transition-colors"
               >
                 + Add New Address
               </button>
@@ -443,22 +448,22 @@ const AddtoCart = () => {
               <form onSubmit={handleAddressSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">Full Name *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
                     <input
                       type="text"
                       value={address.fullName}
                       onChange={(e) => setAddress({...address, fullName: e.target.value})}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">Phone Number *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
                     <input
                       type="tel"
                       value={address.phone}
                       onChange={(e) => setAddress({...address, phone: e.target.value})}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                       pattern="[0-9]{10}"
                       maxLength="10"
                       required
@@ -467,54 +472,54 @@ const AddtoCart = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Address Line 1 *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Address Line 1 *</label>
                   <input
                     type="text"
                     value={address.addressLine1}
                     onChange={(e) => setAddress({...address, addressLine1: e.target.value})}
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                    className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Address Line 2 (Optional)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Address Line 2 (Optional)</label>
                   <input
                     type="text"
                     value={address.addressLine2}
                     onChange={(e) => setAddress({...address, addressLine2: e.target.value})}
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                    className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">City *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">City *</label>
                     <input
                       type="text"
                       value={address.city}
                       onChange={(e) => setAddress({...address, city: e.target.value})}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">State *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">State *</label>
                     <input
                       type="text"
                       value={address.state}
                       onChange={(e) => setAddress({...address, state: e.target.value})}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-1">Pincode *</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Pincode *</label>
                     <input
                       type="text"
                       value={address.pincode}
                       onChange={(e) => setAddress({...address, pincode: e.target.value})}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                       pattern="[0-9]{6}"
                       maxLength="6"
                       required
@@ -523,17 +528,17 @@ const AddtoCart = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-1">Landmark (Optional)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Landmark (Optional)</label>
                   <input
                     type="text"
                     value={address.landmark}
                     onChange={(e) => setAddress({...address, landmark: e.target.value})}
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                    className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                   />
                 </div>
 
                 {addressError && (
-                  <p className="text-red-400 text-sm">{addressError}</p>
+                  <p className="text-red-500 text-sm">{addressError}</p>
                 )}
 
                 <div className="flex space-x-3">
@@ -553,7 +558,7 @@ const AddtoCart = () => {
                         city: '', state: '', pincode: '', landmark: ''
                       });
                     }}
-                    className="px-6 py-3 bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-600"
+                    className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300"
                   >
                     Cancel
                   </button>
@@ -564,7 +569,7 @@ const AddtoCart = () => {
             {savedAddresses.length > 0 && !showAddressForm && (
               <button
                 onClick={() => setCheckoutStep('payment')}
-                className="mt-4 w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg font-medium hover:from-cyan-700 hover:to-blue-700"
+                className="mt-4 w-full py-3 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white rounded-lg font-medium hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90"
               >
                 Proceed to Payment
               </button>
@@ -574,20 +579,20 @@ const AddtoCart = () => {
 
       case 'payment':
         return (
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 mb-6">
-            <h2 className="text-2xl font-bold text-white mb-6">Payment Method</h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Payment Method</h2>
             
             {/* Delivery Address Summary */}
-            <div className="mb-6 p-4 bg-gray-700/50 rounded-lg">
-              <h3 className="text-lg font-semibold text-white mb-2">Delivery To:</h3>
-              <p className="text-gray-300">{address.fullName}</p>
-              <p className="text-gray-300">{address.addressLine1}</p>
-              {address.addressLine2 && <p className="text-gray-300">{address.addressLine2}</p>}
-              <p className="text-gray-300">{address.city}, {address.state} - {address.pincode}</p>
-              <p className="text-gray-300">Phone: {address.phone}</p>
+            <div className="mb-6 p-4 bg-gray-50/80 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Delivery To:</h3>
+              <p className="text-gray-700">{address.fullName}</p>
+              <p className="text-gray-700">{address.addressLine1}</p>
+              {address.addressLine2 && <p className="text-gray-700">{address.addressLine2}</p>}
+              <p className="text-gray-700">{address.city}, {address.state} - {address.pincode}</p>
+              <p className="text-gray-700">Phone: {address.phone}</p>
               <button
                 onClick={() => setCheckoutStep('address')}
-                className="mt-2 text-cyan-400 text-sm hover:text-cyan-300"
+                className="mt-2 text-[#4F46E5] text-sm hover:text-[#4F46E5]/80"
               >
                 Change Address
               </button>
@@ -598,8 +603,8 @@ const AddtoCart = () => {
               {/* Cash on Delivery */}
               <label className={`block p-4 border rounded-lg cursor-pointer transition-all ${
                 selectedPayment === 'cod' 
-                  ? 'border-cyan-500 bg-cyan-500/10' 
-                  : 'border-gray-700 hover:border-gray-600'
+                  ? 'border-[#4F46E5] bg-[#4F46E5]/5' 
+                  : 'border-gray-300 hover:border-gray-400'
               }`}>
                 <div className="flex items-center">
                   <input
@@ -611,16 +616,16 @@ const AddtoCart = () => {
                       setSelectedPayment(e.target.value);
                       setPaymentDetailsError('');
                     }}
-                    className="w-4 h-4 text-cyan-600 bg-gray-700 border-gray-600"
+                    className="w-4 h-4 text-[#4F46E5] border-gray-300"
                   />
                   <div className="ml-3 flex-1">
                     <div className="flex items-center">
-                      <svg className="w-6 h-6 text-gray-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-gray-700 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
-                      <span className="text-white font-medium">Cash on Delivery</span>
+                      <span className="text-gray-900 font-medium">Cash on Delivery</span>
                     </div>
-                    <p className="text-gray-400 text-sm mt-1">Pay when you receive your order</p>
+                    <p className="text-gray-600 text-sm mt-1">Pay when you receive your order</p>
                   </div>
                 </div>
               </label>
@@ -628,8 +633,8 @@ const AddtoCart = () => {
               {/* UPI */}
               <label className={`block p-4 border rounded-lg cursor-pointer transition-all ${
                 selectedPayment === 'upi' 
-                  ? 'border-cyan-500 bg-cyan-500/10' 
-                  : 'border-gray-700 hover:border-gray-600'
+                  ? 'border-[#4F46E5] bg-[#4F46E5]/5' 
+                  : 'border-gray-300 hover:border-gray-400'
               }`}>
                 <div className="flex items-center">
                   <input
@@ -641,16 +646,16 @@ const AddtoCart = () => {
                       setSelectedPayment(e.target.value);
                       setPaymentDetailsError('');
                     }}
-                    className="w-4 h-4 text-cyan-600 bg-gray-700 border-gray-600"
+                    className="w-4 h-4 text-[#4F46E5] border-gray-300"
                   />
                   <div className="ml-3 flex-1">
                     <div className="flex items-center">
-                      <svg className="w-6 h-6 text-gray-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-gray-700 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                       </svg>
-                      <span className="text-white font-medium">UPI</span>
+                      <span className="text-gray-900 font-medium">UPI</span>
                     </div>
-                    <p className="text-gray-400 text-sm mt-1">Pay using Google Pay, PhonePe, Paytm</p>
+                    <p className="text-gray-600 text-sm mt-1">Pay using Google Pay, PhonePe, Paytm</p>
                   </div>
                 </div>
                 {selectedPayment === 'upi' && (
@@ -660,10 +665,10 @@ const AddtoCart = () => {
                       placeholder="Enter UPI ID (e.g., name@okhdfcbank)"
                       value={upiId}
                       onChange={(e) => setUpiId(e.target.value)}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                       onClick={(e) => e.stopPropagation()}
                     />
-                    <p className="text-gray-400 text-xs mt-1">Example: yourname@okhdfcbank, yourname@paytm</p>
+                    <p className="text-gray-500 text-xs mt-1">Example: yourname@okhdfcbank, yourname@paytm</p>
                   </div>
                 )}
               </label>
@@ -671,8 +676,8 @@ const AddtoCart = () => {
               {/* Credit/Debit Card */}
               <label className={`block p-4 border rounded-lg cursor-pointer transition-all ${
                 selectedPayment === 'card' 
-                  ? 'border-cyan-500 bg-cyan-500/10' 
-                  : 'border-gray-700 hover:border-gray-600'
+                  ? 'border-[#4F46E5] bg-[#4F46E5]/5' 
+                  : 'border-gray-300 hover:border-gray-400'
               }`}>
                 <div className="flex items-center">
                   <input
@@ -684,14 +689,14 @@ const AddtoCart = () => {
                       setSelectedPayment(e.target.value);
                       setPaymentDetailsError('');
                     }}
-                    className="w-4 h-4 text-cyan-600 bg-gray-700 border-gray-600"
+                    className="w-4 h-4 text-[#4F46E5] border-gray-300"
                   />
                   <div className="ml-3 flex-1">
                     <div className="flex items-center">
-                      <svg className="w-6 h-6 text-gray-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-gray-700 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                       </svg>
-                      <span className="text-white font-medium">Credit / Debit Card</span>
+                      <span className="text-gray-900 font-medium">Credit / Debit Card</span>
                     </div>
                   </div>
                 </div>
@@ -706,7 +711,7 @@ const AddtoCart = () => {
                         setCardDetails({...cardDetails, cardNumber: formatted});
                       }}
                       maxLength="19"
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                       onClick={(e) => e.stopPropagation()}
                     />
                     <div className="grid grid-cols-2 gap-3">
@@ -719,7 +724,7 @@ const AddtoCart = () => {
                           setCardDetails({...cardDetails, expiryDate: formatted});
                         }}
                         maxLength="5"
-                        className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                        className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                         onClick={(e) => e.stopPropagation()}
                       />
                       <input
@@ -733,7 +738,7 @@ const AddtoCart = () => {
                           }
                         }}
                         maxLength="3"
-                        className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                        className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                         onClick={(e) => e.stopPropagation()}
                       />
                     </div>
@@ -742,7 +747,7 @@ const AddtoCart = () => {
                       placeholder="Name on Card"
                       value={cardDetails.nameOnCard}
                       onChange={(e) => setCardDetails({...cardDetails, nameOnCard: e.target.value})}
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900"
                       onClick={(e) => e.stopPropagation()}
                     />
                   </div>
@@ -751,11 +756,11 @@ const AddtoCart = () => {
             </div>
 
             {paymentError && (
-              <p className="text-red-400 text-sm mb-4">{paymentError}</p>
+              <p className="text-red-500 text-sm mb-4">{paymentError}</p>
             )}
             
             {paymentDetailsError && (
-              <p className="text-red-400 text-sm mb-4">{paymentDetailsError}</p>
+              <p className="text-red-500 text-sm mb-4">{paymentDetailsError}</p>
             )}
 
             <button
@@ -767,7 +772,7 @@ const AddtoCart = () => {
 
             <button
               onClick={() => setCheckoutStep('address')}
-              className="w-full mt-3 py-3 text-gray-400 hover:text-white transition-colors"
+              className="w-full mt-3 py-3 text-gray-500 hover:text-gray-700 transition-colors"
             >
               Back to Address
             </button>
@@ -780,13 +785,13 @@ const AddtoCart = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Your Shopping Cart
           </h1>
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-600 text-lg">
             {checkoutStep === 'cart' && 'Review your selected books and proceed to checkout'}
             {checkoutStep === 'address' && 'Enter your delivery address'}
             {checkoutStep === 'payment' && 'Choose your payment method'}
@@ -798,34 +803,34 @@ const AddtoCart = () => {
               <div className="text-center">
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 ${
                   checkoutStep === 'cart' || checkoutStep === 'address' || checkoutStep === 'payment'
-                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600' 
-                    : 'bg-gray-700'
+                    ? 'bg-gradient-to-r from-[#4F46E5] to-[#818CF8]' 
+                    : 'bg-gray-300'
                 }`}>
                   <span className="text-white font-bold">1</span>
                 </div>
-                <span className={`text-sm ${checkoutStep === 'cart' ? 'text-cyan-300' : 'text-gray-400'}`}>Cart</span>
+                <span className={`text-sm ${checkoutStep === 'cart' ? 'text-[#4F46E5] font-medium' : 'text-gray-500'}`}>Cart</span>
               </div>
-              <div className="w-16 h-1 bg-gray-700"></div>
+              <div className="w-16 h-1 bg-gray-300"></div>
               <div className="text-center">
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 ${
                   checkoutStep === 'address' || checkoutStep === 'payment'
-                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600' 
-                    : 'bg-gray-700'
+                    ? 'bg-gradient-to-r from-[#4F46E5] to-[#818CF8]' 
+                    : 'bg-gray-300'
                 }`}>
                   <span className="text-white font-bold">2</span>
                 </div>
-                <span className={`text-sm ${checkoutStep === 'address' ? 'text-cyan-300' : 'text-gray-400'}`}>Address</span>
+                <span className={`text-sm ${checkoutStep === 'address' ? 'text-[#4F46E5] font-medium' : 'text-gray-500'}`}>Address</span>
               </div>
-              <div className="w-16 h-1 bg-gray-700"></div>
+              <div className="w-16 h-1 bg-gray-300"></div>
               <div className="text-center">
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 ${
                   checkoutStep === 'payment'
-                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600' 
-                    : 'bg-gray-700'
+                    ? 'bg-gradient-to-r from-[#4F46E5] to-[#818CF8]' 
+                    : 'bg-gray-300'
                 }`}>
                   <span className="text-white font-bold">3</span>
                 </div>
-                <span className={`text-sm ${checkoutStep === 'payment' ? 'text-cyan-300' : 'text-gray-400'}`}>Payment</span>
+                <span className={`text-sm ${checkoutStep === 'payment' ? 'text-[#4F46E5] font-medium' : 'text-gray-500'}`}>Payment</span>
               </div>
             </div>
           </div>
@@ -837,9 +842,9 @@ const AddtoCart = () => {
             {checkoutStep === 'cart' ? (
               // Cart content
               <>
-                <div className="bg-gray-800 rounded-xl p-6 mb-6 border border-gray-700">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 mb-6 border border-gray-200">
                   <div className="flex justify-between items-center">
-                    <h2 className="text-xl font-bold text-white">
+                    <h2 className="text-xl font-bold text-gray-900">
                       Your Books ({cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0)} items)
                     </h2>
                     {cartItems.length > 0 && (
@@ -848,7 +853,7 @@ const AddtoCart = () => {
                           setCartItems([]);
                           localStorage.removeItem("bookCart");
                         }}
-                        className="text-red-400 hover:text-red-300 text-sm font-medium flex items-center"
+                        className="text-red-500 hover:text-red-600 text-sm font-medium flex items-center"
                       >
                         <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -860,19 +865,19 @@ const AddtoCart = () => {
                 </div>
 
                 {cartItems.length === 0 ? (
-                  <div className="bg-gray-800 rounded-xl p-12 border border-gray-700 text-center">
-                    <div className="w-24 h-24 mx-auto mb-6 text-gray-500">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-12 border border-gray-200 text-center">
+                    <div className="w-24 h-24 mx-auto mb-6 text-gray-400">
                       <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4">Your cart is empty</h3>
-                    <p className="text-gray-400 mb-8 max-w-md mx-auto">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Your cart is empty</h3>
+                    <p className="text-gray-600 mb-8 max-w-md mx-auto">
                       Looks like you haven't added any books to your cart yet.
                     </p>
                     <button
                       onClick={() => navigate("/")}
-                      className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-lg font-medium hover:from-cyan-700 hover:to-blue-700"
+                      className="px-8 py-3 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white rounded-lg font-medium hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90"
                     >
                       Browse Books
                     </button>
@@ -881,10 +886,10 @@ const AddtoCart = () => {
                   <>
                     <div className="space-y-6">
                       {cartItems.map((item) => (
-                        <div key={`${item.id}-${item.addedAt || Date.now()}`} className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-cyan-500/30 transition-all duration-300">
+                        <div key={`${item.id}-${item.addedAt || Date.now()}`} className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 hover:border-[#4F46E5]/30 transition-all duration-300">
                           <div className="flex flex-col md:flex-row gap-6">
                             <div className="flex-shrink-0">
-                              <div className="w-40 h-52 bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-lg overflow-hidden">
+                              <div className="w-40 h-52 bg-gradient-to-br from-[#4F46E5]/10 to-[#818CF8]/10 rounded-lg overflow-hidden">
                                 <img
                                   src={item.imageUrl}
                                   alt={item.title}
@@ -900,61 +905,61 @@ const AddtoCart = () => {
                             <div className="flex-1">
                               <div className="flex justify-between items-start mb-2">
                                 <div>
-                                  <h3 className="text-xl font-bold text-white mb-1">{item.title}</h3>
-                                  <p className="text-gray-400 mb-2">by {item.author || "Various Authors"}</p>
+                                  <h3 className="text-xl font-bold text-gray-900 mb-1">{item.title}</h3>
+                                  <p className="text-gray-600 mb-2">by {item.author || "Various Authors"}</p>
 
                                   <div className="flex items-center mb-3">
-                                    <div className="flex text-yellow-400">
+                                    <div className="flex text-yellow-500">
                                       {[...Array(5)].map((_, i) => (
                                         <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                                           <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                                         </svg>
                                       ))}
                                     </div>
-                                    <span className="ml-2 text-sm text-gray-400">{item.rating || 4.8}/5</span>
-                                    <span className="mx-2 text-gray-600">•</span>
-                                    <span className="text-sm text-gray-400">{item.category || "Programming"}</span>
+                                    <span className="ml-2 text-sm text-gray-600">{item.rating || 4.8}/5</span>
+                                    <span className="mx-2 text-gray-300">•</span>
+                                    <span className="text-sm text-gray-600">{item.category || "Programming"}</span>
                                   </div>
 
-                                  <p className="text-gray-300 text-sm mb-4">{item.description}</p>
+                                  <p className="text-gray-700 text-sm mb-4">{item.description}</p>
                                 </div>
 
                                 <div className="text-right">
-                                  <div className="text-2xl font-bold text-cyan-400">₹{item.price}</div>
+                                  <div className="text-2xl font-bold text-[#4F46E5]">₹{item.price}</div>
                                   {item.originalPrice && (
                                     <>
                                       <div className="text-sm text-gray-500 line-through">₹{item.originalPrice}</div>
-                                      <div className="text-xs text-green-400 mt-1">Save ₹{item.originalPrice - item.price}</div>
+                                      <div className="text-xs text-green-600 mt-1">Save ₹{item.originalPrice - item.price}</div>
                                     </>
                                   )}
                                 </div>
                               </div>
 
-                              <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-700">
+                              <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
                                 <div className="flex items-center">
                                   <button
                                     onClick={() => updateQuantity(item.id, (item.quantity || 1) - 1)}
-                                    className="w-8 h-8 bg-gray-700 rounded-l-lg flex items-center justify-center text-gray-300 hover:bg-gray-600 transition-colors"
+                                    className="w-8 h-8 bg-gray-200 rounded-l-lg flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-colors"
                                   >
                                     -
                                   </button>
-                                  <div className="w-12 h-8 bg-gray-900 flex items-center justify-center text-white">
+                                  <div className="w-12 h-8 bg-white border-y border-gray-200 flex items-center justify-center text-gray-900">
                                     {item.quantity || 1}
                                   </div>
                                   <button
                                     onClick={() => updateQuantity(item.id, (item.quantity || 1) + 1)}
-                                    className="w-8 h-8 bg-gray-700 rounded-r-lg flex items-center justify-center text-gray-300 hover:bg-gray-600 transition-colors"
+                                    className="w-8 h-8 bg-gray-200 rounded-r-lg flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-colors"
                                   >
                                     +
                                   </button>
-                                  <span className="ml-4 text-gray-400 text-sm">
-                                    Total: <span className="text-cyan-300 font-medium">₹{(item.price || 0) * (item.quantity || 1)}</span>
+                                  <span className="ml-4 text-gray-600 text-sm">
+                                    Total: <span className="text-[#4F46E5] font-medium">₹{(item.price || 0) * (item.quantity || 1)}</span>
                                   </span>
                                 </div>
 
                                 <button
                                   onClick={() => removeItem(item.id)}
-                                  className="text-red-400 hover:text-red-300 text-sm font-medium flex items-center"
+                                  className="text-red-500 hover:text-red-600 text-sm font-medium flex items-center"
                                 >
                                   <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -979,34 +984,34 @@ const AddtoCart = () => {
           {/* Order Summary Sidebar - Always visible */}
           <div className="lg:col-span-1">
             <div className="sticky top-8">
-              <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 mb-6">
-                <h2 className="text-xl font-bold text-white mb-6">Order Summary</h2>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 mb-6">
+                <h2 className="text-xl font-bold text-gray-900 mb-6">Order Summary</h2>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Subtotal</span>
-                    <span className="text-white font-medium">₹{subtotal}</span>
+                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-gray-900 font-medium">₹{subtotal}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Shipping Fee</span>
-                    <span className={shippingFee === 0 ? "text-green-400 font-medium" : "text-white font-medium"}>
+                    <span className="text-gray-600">Shipping Fee</span>
+                    <span className={shippingFee === 0 ? "text-green-600 font-medium" : "text-gray-900 font-medium"}>
                       {shippingFee === 0 ? "FREE" : `₹${shippingFee}`}
                     </span>
                   </div>
                   {discount > 0 && (
                     <div className="flex justify-between">
-                      <span className="text-gray-400">Discount ({appliedPromo})</span>
-                      <span className="text-green-400 font-medium">-₹{discount}</span>
+                      <span className="text-gray-600">Discount ({appliedPromo})</span>
+                      <span className="text-green-600 font-medium">-₹{discount}</span>
                     </div>
                   )}
                 </div>
 
-                <div className="border-t border-gray-700 pt-4 mb-6">
+                <div className="border-t border-gray-200 pt-4 mb-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-lg font-bold text-white">Total</span>
+                    <span className="text-lg font-bold text-gray-900">Total</span>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-cyan-400">₹{total}</div>
-                      <div className="text-sm text-gray-400">Inclusive of all taxes</div>
+                      <div className="text-3xl font-bold text-[#4F46E5]">₹{total}</div>
+                      <div className="text-sm text-gray-500">Inclusive of all taxes</div>
                     </div>
                   </div>
                 </div>
@@ -1014,24 +1019,24 @@ const AddtoCart = () => {
                 {checkoutStep === 'cart' && (
                   <>
                     <div className="mb-6">
-                      <label className="block text-sm font-medium text-gray-300 mb-2">Promo Code</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Promo Code</label>
                       <div className="flex">
                         <input
                           type="text"
                           value={promoCode}
                           onChange={(e) => setPromoCode(e.target.value)}
                           placeholder="Enter promo code"
-                          className="flex-1 bg-gray-700 border border-gray-600 rounded-l-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                          className="flex-1 bg-white border border-gray-300 rounded-l-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent"
                         />
                         <button
                           onClick={applyPromoCode}
-                          className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-6 py-3 rounded-r-lg font-medium hover:from-cyan-700 hover:to-blue-700 transition-colors"
+                          className="bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white px-6 py-3 rounded-r-lg font-medium hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 transition-colors"
                         >
                           Apply
                         </button>
                       </div>
-                      {promoError && <p className="text-red-400 text-sm mt-2">{promoError}</p>}
-                      {appliedPromo && <p className="text-green-400 text-sm mt-2">Promo code {appliedPromo} applied! 10% discount added.</p>}
+                      {promoError && <p className="text-red-500 text-sm mt-2">{promoError}</p>}
+                      {appliedPromo && <p className="text-green-600 text-sm mt-2">Promo code {appliedPromo} applied! 10% discount added.</p>}
                     </div>
 
                     <button
@@ -1043,8 +1048,8 @@ const AddtoCart = () => {
                         setCheckoutStep('address');
                       }}
                       disabled={cartItems.length === 0}
-                      className={`w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl mb-4 ${
-                        cartItems.length === 0 ? "opacity-50 cursor-not-allowed" : "hover:from-blue-700 hover:to-purple-700"
+                      className={`w-full bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl mb-4 ${
+                        cartItems.length === 0 ? "opacity-50 cursor-not-allowed" : "hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90"
                       }`}
                     >
                       {cartItems.length === 0 ? "Cart is Empty" : "Proceed to Checkout"}
@@ -1054,20 +1059,20 @@ const AddtoCart = () => {
 
                 <div className="text-center mt-4">
                   <div className="flex items-center justify-center space-x-4 mb-3">
-                    <div className="flex items-center text-gray-400">
-                      <svg className="w-5 h-5 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-center text-gray-600">
+                      <svg className="w-5 h-5 mr-1 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       <span className="text-xs">Secure Payment</span>
                     </div>
-                    <div className="flex items-center text-gray-400">
-                      <svg className="w-5 h-5 mr-1 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-center text-gray-600">
+                      <svg className="w-5 h-5 mr-1 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
                       <span className="text-xs">SSL Encrypted</span>
                     </div>
                   </div>
-                  <p className="text-gray-400 text-xs">30-day money back guarantee • 24/7 customer support</p>
+                  <p className="text-gray-500 text-xs">30-day money back guarantee • 24/7 customer support</p>
                 </div>
               </div>
             </div>
@@ -1077,39 +1082,39 @@ const AddtoCart = () => {
 
       {/* Payment Success Popup Modal */}
       {showPaymentSuccess && completedOrder && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
-          <div className="bg-gray-800 rounded-2xl max-w-md w-full p-6 transform transition-all duration-300 scale-100 animate-fadeIn">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 transform transition-all duration-300 scale-100 animate-fadeIn">
             {/* Success Icon */}
             <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-500/20 mb-4">
-                <svg className="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mb-4">
+                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">Payment Successful! 🎉</h3>
-              <p className="text-gray-400">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Payment Successful! 🎉</h3>
+              <p className="text-gray-600">
                 Your order has been placed successfully
               </p>
             </div>
 
             {/* Order Summary */}
-            <div className="bg-gray-700/30 rounded-lg p-4 mb-6">
+            <div className="bg-gray-50 rounded-lg p-4 mb-6">
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Order ID:</span>
-                  <span className="text-white font-mono text-sm">{completedOrder.id}</span>
+                  <span className="text-gray-600">Order ID:</span>
+                  <span className="text-gray-900 font-mono text-sm">{completedOrder.id}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Total Amount:</span>
-                  <span className="text-cyan-400 font-bold">₹{completedOrder.total}</span>
+                  <span className="text-gray-600">Total Amount:</span>
+                  <span className="text-[#4F46E5] font-bold">₹{completedOrder.total}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Payment Method:</span>
-                  <span className="text-white">{completedOrder.paymentMethod}</span>
+                  <span className="text-gray-600">Payment Method:</span>
+                  <span className="text-gray-900">{completedOrder.paymentMethod}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Items:</span>
-                  <span className="text-white">{completedOrder.items.length} books</span>
+                  <span className="text-gray-600">Items:</span>
+                  <span className="text-gray-900">{completedOrder.items.length} books</span>
                 </div>
               </div>
             </div>
@@ -1118,13 +1123,13 @@ const AddtoCart = () => {
             <div className="space-y-3">
               <button
                 onClick={handleViewOrders}
-                className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-[1.02]"
+                className="w-full py-3 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white rounded-xl font-semibold hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 transition-all duration-300 transform hover:scale-[1.02]"
               >
                 View My Orders
               </button>
               <button
                 onClick={handleContinueShopping}
-                className="w-full py-3 bg-gray-700 text-white rounded-xl font-semibold hover:bg-gray-600 transition-all duration-300"
+                className="w-full py-3 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition-all duration-300"
               >
                 Continue Shopping
               </button>
@@ -1133,7 +1138,7 @@ const AddtoCart = () => {
             {/* Close button */}
             <button
               onClick={handleContinueShopping}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

@@ -9,12 +9,12 @@ const Phero = () => {
   }, []);
 
   return (
-    <div className="relative min-h-[90vh] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <div className="relative min-h-[90vh] bg-gradient-to-br from-[#4F46E5]/5 via-white to-[#818CF8]/5 overflow-hidden">
       <div className="absolute inset-0">
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"
+            className="absolute rounded-full bg-gradient-to-r from-[#4F46E5]/20 to-[#818CF8]/20"
             style={{
               width: `${Math.random() * 40 + 10}px`,
               height: `${Math.random() * 40 + 10}px`,
@@ -26,16 +26,16 @@ const Phero = () => {
         ))}
 
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.12]"
           style={{
-            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                              linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #4F46E5 1px, transparent 1px),
+                              linear-gradient(to bottom, #4F46E5 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
 
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#4F46E5]/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#818CF8]/20 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 w-full h-full flex items-center">
@@ -43,7 +43,7 @@ const Phero = () => {
           <div className="max-w-4xl mx-auto text-center">
             <Link
               to="/"
-              className={`inline-flex items-center text-gray-400 hover:text-white mb-12 transition-all duration-1000 ${
+              className={`inline-flex items-center text-[#6B7280] hover:text-[#4F46E5] mb-12 transition-all duration-1000 ${
                 mounted
                   ? "translate-y-0 opacity-100"
                   : "-translate-y-10 opacity-0"
@@ -72,7 +72,7 @@ const Phero = () => {
               }`}
             >
               <div className="flex justify-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-2xl">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#4F46E5] to-[#818CF8] rounded-2xl flex items-center justify-center shadow-xl">
                   <svg
                     className="w-10 h-10 text-white"
                     fill="none"
@@ -89,11 +89,11 @@ const Phero = () => {
                 </div>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-bold text-white">
+              <h1 className="text-5xl md:text-6xl font-bold text-[#111827]">
                 Privacy Policy
               </h1>
 
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-[#6B7280] max-w-2xl mx-auto leading-relaxed">
                 We value your trust and are committed to protecting your
                 personal information. Read on to understand how we handle your
                 data.
@@ -101,23 +101,23 @@ const Phero = () => {
 
               <div className="flex flex-wrap justify-center gap-8 pt-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white">GDPR</div>
-                  <div className="text-sm text-amber-300 mt-1">Compliant</div>
+                  <div className="text-3xl font-bold text-[#4F46E5]">GDPR</div>
+                  <div className="text-sm text-[#6B7280] mt-1">Compliant</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white">AES-256</div>
-                  <div className="text-sm text-amber-300 mt-1">Encryption</div>
+                  <div className="text-3xl font-bold text-[#4F46E5]">AES-256</div>
+                  <div className="text-sm text-[#6B7280] mt-1">Encryption</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white">24/7</div>
-                  <div className="text-sm text-amber-300 mt-1">Monitoring</div>
+                  <div className="text-3xl font-bold text-[#4F46E5]">24/7</div>
+                  <div className="text-sm text-[#6B7280] mt-1">Monitoring</div>
                 </div>
               </div>
 
               <div className="pt-8">
                 <a
                   href="#privacy-content"
-                  className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-amber-300 rounded-xl hover:bg-white/20 transition-all duration-300"
+                  className="inline-flex items-center px-8 py-4 bg-white/80 backdrop-blur-sm border border-gray-200 text-[#4F46E5] rounded-xl hover:bg-white transition-all duration-300 shadow-sm"
                 >
                   <span>Read Privacy Policy</span>
                   <svg
@@ -145,8 +145,8 @@ const Phero = () => {
           mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-white/40 rounded-full mt-2 animate-bounce"></div>
+        <div className="w-6 h-10 border-2 border-[#4F46E5]/30 rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-[#4F46E5] rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
 

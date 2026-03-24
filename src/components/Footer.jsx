@@ -2,12 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  
-  
   const handleLinkClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth" 
+      behavior: "smooth"
     });
   };
 
@@ -16,8 +14,7 @@ const Footer = () => {
     { name: "About", path: "/about" },
     { name: "Books", path: "/books" },
     { name: "Contact", path: "/contact" },
-    { name: "AddtoCart", path: "/addtocart" },
-   
+    { name: "Add to Cart", path: "/addtocart" },
   ];
 
   const socialLinks = [
@@ -41,104 +38,190 @@ const Footer = () => {
     },
   ];
 
+  // Programming categories for BOOKMARK'D
+  const bookCategories = [
+    "Frontend Development",
+    "Backend Development", 
+    "Mobile Development",
+    "Data Science & ML",
+    "Cloud Computing",
+    "DevOps",
+    "Database Systems",
+    "Cybersecurity"
+  ];
+
+  const usefulLinks = [
+    "Secure Shopping",
+    "Privacy Policy",
+    "Terms of Use",
+    "Shipping Policy",
+    "Returns Policy",
+    "Payment Options",
+    "Gift Card T&C"
+  ];
+
+  const aboutLinks = [
+    "About BOOKMARK'D",
+    "Store Locator",
+    "Blogs",
+    "Careers",
+    "Become a Affiliate",
+    "Contact Us"
+  ];
+
+  const popularSearches = [
+    "JavaScript Books",
+    "Python Programming",
+    "React.js Guide",
+    "Machine Learning",
+    "Data Structures",
+    "Java Development",
+    "C++ Programming",
+    "Cloud Computing",
+    "DevOps Tools",
+    "Cybersecurity",
+    "Web Development",
+    "Mobile App Development"
+  ];
+
   return (
-    <footer className="bg-[#0A1929] border-t border-gray-200 dark:border-gray-800 mt-auto">
-      <div className="container px-4 sm:px-6 lg:px-8 py-8 mx-auto">
-        <div className="flex flex-col items-center text-center">
-          {/* Logo Link with scroll to top */}
-          <a 
-            href="/" 
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = "/";
-              handleLinkClick();
-            }}
-          >
+    <footer className="bg-[#0A1929] text-gray-300 border-t border-gray-800">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-10">
+          {/* Brand Column */}
+          <div className="space-y-4">
             <img
-              className="w-auto h-6 sm:h-7"
+              className="w-auto h-8"
               src="/images/logo.png"
-              alt="Logo"
+              alt="BOOKMARK'D Logo"
             />
-          </a>
-
-          <nav className="w-full max-w-2xl">
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mt-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className="text-sm md:text-base text-gray-600 transition-all duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 hover:scale-105"
-                  aria-label={item.name}
-                  onClick={handleLinkClick} // Scroll to top on click
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </nav>
-
-          <div className="flex justify-center gap-6 mt-8">
-            {socialLinks.map((social) => (
-              <a
-                key={social.ariaLabel}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 transition-all duration-300 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-500 hover:scale-110"
-                aria-label={social.ariaLabel}
-                onClick={handleLinkClick} // Scroll to top on click (though external links open in new tab)
-              >
-                <svg
-                  className="w-6 h-6 md:w-7 md:h-7"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d={social.svgPath} />
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Your one-stop destination for the best programming books. From beginner guides to advanced references, we have everything you need for your coding journey.
+            </p>
+            <div className="space-y-2 pt-2">
+              <a href="mailto:hello@bookmarkd.com" className="flex items-center text-sm text-gray-400 hover:text-blue-400 transition-colors">
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
+                hello@bookmarkd.com
+              </a>
+              <a href="tel:+918530206759" className="flex items-center text-sm text-gray-400 hover:text-blue-400 transition-colors">
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +91 85302 06759
+              </a>
+            </div>
+          </div>
+
+          {/* Categories Column */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Categories</h3>
+            <ul className="space-y-2">
+              {bookCategories.map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-sm text-gray-400 hover:text-blue-400 transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Useful Links Column */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Useful Links</h3>
+            <ul className="space-y-2">
+              {usefulLinks.map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-sm text-gray-400 hover:text-blue-400 transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* About Column */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">About</h3>
+            <ul className="space-y-2">
+              {aboutLinks.map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-sm text-gray-400 hover:text-blue-400 transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Popular Searches Section */}
+        <div className="border-t border-gray-800 pt-6 mb-6">
+          <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Popular Searches</h3>
+          <div className="flex flex-wrap gap-2">
+            {popularSearches.map((item) => (
+              <a key={item} href="#" className="text-xs px-3 py-1.5 bg-gray-800/50 text-gray-400 rounded-full hover:bg-blue-600/20 hover:text-blue-400 transition-all duration-300">
+                {item}
               </a>
             ))}
           </div>
         </div>
 
-        <hr className="my-8 border-gray-200 dark:border-gray-800" />
+        {/* Navigation Links */}
+        <div className="border-t border-gray-800 pt-6">
+          <nav className="flex flex-wrap justify-center gap-6 md:gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="text-sm text-gray-400 transition-all duration-300 hover:text-blue-400 hover:scale-105"
+                onClick={handleLinkClick}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
-        <div className="flex flex-col items-center justify-between md:flex-row">
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
-            © {new Date().getFullYear()} BOOKMARK'D. All rights reserved.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-            {/* Privacy Policy Link */}
-            <Link
-              to="/privacy"
-              className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-              onClick={handleLinkClick} // Scroll to top on click
+        {/* Social Links */}
+        <div className="flex justify-center gap-6 mt-6">
+          {socialLinks.map((social) => (
+            <a
+              key={social.ariaLabel}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 transition-all duration-300 hover:text-pink-500 hover:scale-110"
+              aria-label={social.ariaLabel}
             >
+              <svg className="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d={social.svgPath} />
+              </svg>
+            </a>
+          ))}
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-xs text-gray-500 mb-4 md:mb-0">
+            © {new Date().getFullYear()} BOOKMARK'D. All Rights Reserved.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-500">
+            <Link to="/privacy" className="hover:text-blue-400 transition-colors" onClick={handleLinkClick}>
               Privacy Policy
             </Link>
-            
-            {/* Terms of Service Link */}
-            <Link
-              to="/terms"
-              className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-              onClick={handleLinkClick} // Scroll to top on click
-            >
+            <Link to="/terms" className="hover:text-blue-400 transition-colors" onClick={handleLinkClick}>
               Terms of Service
             </Link>
-            
-            {/* Cookie Policy Link */}
-            <Link
-              to="/cookiepage"
-              className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-              onClick={handleLinkClick} // Scroll to top on click
-            >
+            <Link to="/cookiepage" className="hover:text-blue-400 transition-colors" onClick={handleLinkClick}>
               Cookie Policy
             </Link>
           </div>
         </div>
-
-        <div className="mt-8 md:hidden"></div>
       </div>
     </footer>
   );

@@ -26,14 +26,14 @@ const Contact = () => {
   return (
     <div>
       <Contacthero />
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="inline-block mb-4"></div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#111827] mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#4F46E5] to-[#4F46E5]">
               Contact BOOKMARK'D
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto">
               Have questions about orders or books? Our team is here to help you
               find the perfect read.
             </p>
@@ -41,9 +41,9 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-1">
-              <div className="bg-gray-800 rounded-2xl shadow-xl p-8 h-full border border-gray-700">
-                <h2 className="text-2xl font-bold text-white mb-8 flex items-center">
-                  <span className="bg-blue-900/30 text-blue-400 p-2 rounded-lg mr-3 border border-blue-800/50">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm p-8 h-full border border-gray-200">
+                <h2 className="text-2xl font-bold text-[#111827] mb-8 flex items-center">
+                  <span className="bg-[#4F46E5]/10 text-[#4F46E5] p-2 rounded-lg mr-3 border border-[#4F46E5]/20">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -62,9 +62,9 @@ const Contact = () => {
                 </h2>
 
                 <div className="space-y-6">
-                  <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600 hover:shadow-lg transition-all duration-300 hover:border-blue-500/30">
+                  <div className="bg-gray-50/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:border-[#4F46E5]/30">
                     <div className="flex items-start">
-                      <div className="bg-blue-600 p-3 rounded-lg mr-4">
+                      <div className="bg-gradient-to-r from-[#4F46E5] to-[#818CF8] p-3 rounded-lg mr-4">
                         <svg
                           className="w-6 h-6 text-white"
                           fill="none"
@@ -80,30 +80,30 @@ const Contact = () => {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="font-semibold text-white mb-2">
+                        <h3 className="font-semibold text-[#111827] mb-2">
                           Phone Support
                         </h3>
                         <div className="space-y-1">
-                          <p className="text-gray-300 font-medium">
+                          <p className="text-[#6B7280] font-medium">
                             +91 6351559214
                           </p>
-                          <p className="text-gray-300 font-medium">
+                          <p className="text-[#6B7280] font-medium">
                             +91 7490076413
                           </p>
-                          <p className="text-gray-300 font-medium">
+                          <p className="text-[#6B7280] font-medium">
                             +91 7861894244
                           </p>
                         </div>
-                        <p className="text-sm text-gray-400 mt-2">
+                        <p className="text-sm text-[#9CA3AF] mt-2">
                           Available 9am-8pm
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600 hover:shadow-lg transition-all duration-300 hover:border-purple-500/30">
+                  <div className="bg-gray-50/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:border-[#4F46E5]/30">
                     <div className="flex items-start">
-                      <div className="bg-purple-600 p-3 rounded-lg mr-4">
+                      <div className="bg-gradient-to-r from-[#4F46E5] to-[#818CF8] p-3 rounded-lg mr-4">
                         <svg
                           className="w-6 h-6 text-white"
                           fill="none"
@@ -119,39 +119,39 @@ const Contact = () => {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="font-semibold text-white mb-2">
+                        <h3 className="font-semibold text-[#111827] mb-2">
                           Email Support
                         </h3>
                         <div className="space-y-2">
                           <a
                             href="mailto:mujibullakhan41@gmail.com"
-                            className="block text-blue-400 hover:text-blue-300 transition-colors font-medium"
+                            className="block text-[#4F46E5] hover:text-[#4F46E5]/80 transition-colors font-medium"
                           >
                             mujibullakhan41@gmail.com
                           </a>
                           <a
                             href="mailto:abdulrehmanmodasiya@gmail.com"
-                            className="block text-blue-400 hover:text-blue-300 transition-colors font-medium"
+                            className="block text-[#4F46E5] hover:text-[#4F46E5]/80 transition-colors font-medium"
                           >
                             modasiya178@gmail.com
                           </a>
                           <a
                             href="mailto:mdevang69@gmail.com"
-                            className="block text-blue-400 hover:text-blue-300 transition-colors font-medium"
+                            className="block text-[#4F46E5] hover:text-[#4F46E5]/80 transition-colors font-medium"
                           >
                             mdevang69@gmail.com
                           </a>
                         </div>
-                        <p className="text-sm text-gray-400 mt-2">
+                        <p className="text-sm text-[#9CA3AF] mt-2">
                           Response within 24 hours
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600 hover:shadow-lg transition-all duration-300 hover:border-green-500/30">
+                  <div className="bg-gray-50/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:border-[#4F46E5]/30">
                     <div className="flex items-start">
-                      <div className="bg-green-600 p-3 rounded-lg mr-4">
+                      <div className="bg-gradient-to-r from-[#4F46E5] to-[#818CF8] p-3 rounded-lg mr-4">
                         <svg
                           className="w-6 h-6 text-white"
                           fill="none"
@@ -167,21 +167,21 @@ const Contact = () => {
                         </svg>
                       </div>
                       <div>
-                        <h3 className="font-semibold text-white mb-2">
+                        <h3 className="font-semibold text-[#111827] mb-2">
                           Working Hours
                         </h3>
                         <div className="space-y-1">
-                          <p className="text-gray-300 font-medium">
+                          <p className="text-[#6B7280] font-medium">
                             Monday - Friday: 9am - 8pm
                           </p>
-                          <p className="text-gray-300 font-medium">
+                          <p className="text-[#6B7280] font-medium">
                             Saturday: 10am - 6pm
                           </p>
-                          <p className="text-gray-300 font-medium">
+                          <p className="text-[#6B7280] font-medium">
                             Sunday: 11am - 5pm
                           </p>
                         </div>
-                        <p className="text-sm text-green-400 font-medium mt-2">
+                        <p className="text-sm text-[#F59E0B] font-medium mt-2">
                           Always here to help!
                         </p>
                       </div>
@@ -189,10 +189,10 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="mt-8 p-6 bg-yellow-900/20 rounded-xl border border-yellow-800/50">
-                  <h4 className="font-semibold text-white mb-3 flex items-center">
+                <div className="mt-8 p-6 bg-[#F59E0B]/10 backdrop-blur-sm rounded-xl border border-[#F59E0B]/20">
+                  <h4 className="font-semibold text-[#111827] mb-3 flex items-center">
                     <svg
-                      className="w-5 h-5 text-yellow-400 mr-2"
+                      className="w-5 h-5 text-[#F59E0B] mr-2"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -206,7 +206,7 @@ const Contact = () => {
                     </svg>
                     Quick Tip
                   </h4>
-                  <p className="text-sm text-gray-300">
+                  <p className="text-sm text-[#6B7280]">
                     For faster order assistance, please include your order
                     number in your message. Our average response time is less
                     than 24 hours!
@@ -216,12 +216,12 @@ const Contact = () => {
             </div>
 
             <div className="lg:col-span-2">
-              <div className="bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-700">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm p-8 border border-gray-200">
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-white mb-3">
+                  <h2 className="text-2xl font-bold text-[#111827] mb-3">
                     Send us a Message
                   </h2>
-                  <p className="text-gray-300">
+                  <p className="text-[#6B7280]">
                     Fill out the form below and we'll get back to you as soon as
                     possible.
                   </p>
@@ -230,13 +230,13 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="group">
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                      <label className="block text-sm font-medium text-[#6B7280] mb-2">
                         Full Name
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                           <svg
-                            className="h-5 w-5 text-gray-500"
+                            className="h-5 w-5 text-[#9CA3AF]"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -255,20 +255,20 @@ const Contact = () => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="pl-10 w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+                          className="pl-10 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent transition-all duration-300 text-[#111827] placeholder-[#9CA3AF]"
                           placeholder="Enter your full name"
                         />
                       </div>
                     </div>
 
                     <div className="group">
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                      <label className="block text-sm font-medium text-[#6B7280] mb-2">
                         Email Address
                       </label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                           <svg
-                            className="h-5 w-5 text-gray-500"
+                            className="h-5 w-5 text-[#9CA3AF]"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -287,7 +287,7 @@ const Contact = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="pl-10 w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-white placeholder-gray-400"
+                          className="pl-10 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent transition-all duration-300 text-[#111827] placeholder-[#9CA3AF]"
                           placeholder="Enter your email address"
                         />
                       </div>
@@ -295,13 +295,13 @@ const Contact = () => {
                   </div>
 
                   <div className="group">
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <label className="block text-sm font-medium text-[#6B7280] mb-2">
                       Your Message
                     </label>
                     <div className="relative">
                       <div className="absolute top-3 left-3 pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-500"
+                          className="h-5 w-5 text-[#9CA3AF]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -320,7 +320,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows="6"
-                        className="pl-10 w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-white placeholder-gray-400"
+                        className="pl-10 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent transition-all duration-300 resize-none text-[#111827] placeholder-[#9CA3AF]"
                         placeholder="How can we assist you today? Please include any relevant details..."
                       />
                     </div>
@@ -329,7 +329,7 @@ const Contact = () => {
                   <div className="pt-4">
                     <button
                       type="submit"
-                      className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-blue-700 to-purple-700 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center justify-center"
+                      className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white font-semibold rounded-xl hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 transition-all duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-lg flex items-center justify-center"
                     >
                       <span>Send Message</span>
                       <svg
@@ -349,12 +349,12 @@ const Contact = () => {
                   </div>
                 </form>
 
-                <div className="mt-8 pt-8 border-t border-gray-700">
+                <div className="mt-8 pt-8 border-t border-gray-200">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex items-center">
-                      <div className="bg-blue-900/30 p-3 rounded-lg mr-4 border border-blue-800/50">
+                      <div className="bg-[#4F46E5]/10 p-3 rounded-lg mr-4 border border-[#4F46E5]/20">
                         <svg
-                          className="w-6 h-6 text-blue-400"
+                          className="w-6 h-6 text-[#4F46E5]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -368,18 +368,18 @@ const Contact = () => {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-white">
+                        <h4 className="font-semibold text-[#111827]">
                           Secure Communication
                         </h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-[#6B7280]">
                           Your information is encrypted and secure
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <div className="bg-green-900/30 p-3 rounded-lg mr-4 border border-green-800/50">
+                      <div className="bg-[#4F46E5]/10 p-3 rounded-lg mr-4 border border-[#4F46E5]/20">
                         <svg
-                          className="w-6 h-6 text-green-400"
+                          className="w-6 h-6 text-[#4F46E5]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -393,10 +393,10 @@ const Contact = () => {
                         </svg>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-white">
+                        <h4 className="font-semibold text-[#111827]">
                           Fast Response
                         </h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-[#6B7280]">
                           Typically reply within 4-6 hours
                         </p>
                       </div>
@@ -409,9 +409,9 @@ const Contact = () => {
 
           <div className="mt-12 text-center">
             <div className="inline-flex items-center justify-center space-x-2 mb-4">
-              <span className="text-xl font-bold text-white">BOOKMARK'D</span>
+              <span className="text-xl font-bold text-[#111827]">BOOKMARK'D</span>
             </div>
-            <p className="text-gray-400">
+            <p className="text-[#6B7280]">
               Your trusted online bookstore since 2026 • Making reading
               accessible to everyone
             </p>

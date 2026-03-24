@@ -6,11 +6,11 @@ const Cookiepage = () => {
   return (
     <div>
       <Chero />
-      <div className="bg-white dark:bg-gray-900 min-h-screen py-12">
+      <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 min-h-screen py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <Link
             to="/"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 mb-8 transition-colors"
+            className="inline-flex items-center text-gray-600 hover:text-[#F59E0B] mb-8 transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -27,11 +27,11 @@ const Cookiepage = () => {
             Back to Home
           </Link>
 
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 border border-gray-200">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Cookie Policy
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 mb-8">
+            <p className="text-gray-600 mb-8">
               Last updated:{" "}
               {new Date().toLocaleDateString("en-US", {
                 year: "numeric",
@@ -40,10 +40,10 @@ const Cookiepage = () => {
               })}
             </p>
 
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p className="text-gray-700 dark:text-gray-300 mb-6">
+            <div className="prose prose-lg max-w-none">
+              <p className="text-gray-700 mb-6">
                 This Cookie Policy explains how{" "}
-                <span className="font-semibold text-blue-600 dark:text-blue-400">
+                <span className="font-semibold text-[#F59E0B]">
                   BOOKMARK'D
                 </span>{" "}
                 uses cookies and similar technologies to recognize you when you
@@ -52,10 +52,10 @@ const Cookiepage = () => {
                 them.
               </p>
 
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
                 What Are Cookies?
               </h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-6">
+              <p className="text-gray-700 mb-6">
                 Cookies are small data files that are placed on your computer or
                 mobile device when you visit a website. Cookies are widely used
                 by website owners to make their websites work more efficiently,
@@ -63,16 +63,16 @@ const Cookiepage = () => {
                 experience.
               </p>
 
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
                 Types of Cookies We Use
               </h2>
 
               <div className="space-y-6 mb-6">
-                <div className="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-lg">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <div className="bg-amber-50/80 p-5 rounded-lg border border-amber-100">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
                     🍪 Essential Cookies
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-700">
                     These cookies are necessary to provide you with services
                     available through our website and to use some of its
                     features, such as accessing secure areas. Without these
@@ -80,11 +80,11 @@ const Cookiepage = () => {
                   </p>
                 </div>
 
-                <div className="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-lg">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <div className="bg-amber-50/80 p-5 rounded-lg border border-amber-100">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
                     🎨 Functionality Cookies
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-700">
                     These cookies allow our website to remember choices you make
                     (such as your username, language, or region) and provide
                     enhanced, more personal features. They may also be used to
@@ -93,11 +93,11 @@ const Cookiepage = () => {
                   </p>
                 </div>
 
-                <div className="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-lg">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <div className="bg-amber-50/80 p-5 rounded-lg border border-amber-100">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
                     📊 Analytics and Performance Cookies
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-700">
                     These cookies are used to collect information about traffic
                     to our website and how users use our website. The
                     information collected does not identify any individual
@@ -105,11 +105,11 @@ const Cookiepage = () => {
                   </p>
                 </div>
 
-                <div className="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-lg">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <div className="bg-amber-50/80 p-5 rounded-lg border border-amber-100">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
                     🎯 Advertising Cookies
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
+                  <p className="text-gray-700">
                     These cookies are used to make advertising messages more
                     relevant to you and your interests. They also perform
                     functions like preventing the same ad from continuously
@@ -118,40 +118,40 @@ const Cookiepage = () => {
                 </div>
               </div>
 
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
                 How Can You Control Cookies?
               </h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
+              <p className="text-gray-700 mb-4">
                 You have the right to decide whether to accept or reject
                 cookies. You can set or amend your web browser controls to
                 accept or refuse cookies. If you choose to reject cookies, you
                 may still use our website though your access to some
                 functionality and areas may be restricted.
               </p>
-              <p className="text-gray-700 dark:text-gray-300 mb-6">
+              <p className="text-gray-700 mb-6">
                 Most web browsers allow you to control cookies through their
                 settings preferences. However, if you limit the ability of
                 websites to set cookies, you may worsen your overall user
                 experience and lose functionality.
               </p>
 
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
                 Updates to This Policy
               </h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-6">
+              <p className="text-gray-700 mb-6">
                 We may update this Cookie Policy from time to time to reflect
                 changes in technology, regulation, or our business practices.
                 Any updates will become effective upon posting of the revised
                 Cookie Policy on our website.
               </p>
 
-              <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg mt-8">
-                <p className="text-gray-700 dark:text-gray-300">
+              <div className="bg-amber-50 p-6 rounded-lg mt-8 border border-amber-100">
+                <p className="text-gray-700">
                   <span className="font-semibold">Questions?</span> If you have
                   any questions about our use of cookies, please contact us at{" "}
                   <a
                     href="mailto:privacy@bookmarkd.com"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                    className="text-[#F59E0B] hover:text-[#F59E0B]/80 hover:underline"
                   >
                     privacy@bookmarkd.com
                   </a>

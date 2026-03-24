@@ -8,12 +8,12 @@ const ContactHero = () => {
   }, []);
 
   return (
-    <div className="relative min-h-[90vh] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+    <div className="relative min-h-[90vh] bg-gradient-to-br from-slate-50 via-white to-gray-50 overflow-hidden">
       <div className="absolute inset-0">
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"
+            className="absolute rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20"
             style={{
               width: `${Math.random() * 40 + 10}px`,
               height: `${Math.random() * 40 + 10}px`,
@@ -25,16 +25,16 @@ const ContactHero = () => {
         ))}
 
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.12]"
           style={{
-            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                              linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #4F46E5 1px, transparent 1px),
+                              linear-gradient(to bottom, #4F46E5 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
 
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 w-full">
@@ -51,8 +51,8 @@ const ContactHero = () => {
               >
                 <div className="inline-flex items-center space-x-3 mb-8">
                   <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-                    <div className="relative bg-gradient-to-r from-blue-500 to-cyan-500 text-white p-3 rounded-full">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                    <div className="relative bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white p-3 rounded-full">
                       <img
                         src="https://img.icons8.com/ios-filled/50/FFFFFF/speech-bubble.png"
                         alt="Chat Icon"
@@ -60,59 +60,59 @@ const ContactHero = () => {
                       />
                     </div>
                   </div>
-                  <span className="text-sm font-semibold tracking-wider text-cyan-300 uppercase">
+                  <span className="text-sm font-semibold tracking-wider text-[#4F46E5] uppercase">
                     Premium Support
                   </span>
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#111827] mb-6 leading-tight">
                   Connect With
                   <span className="block relative mt-3">
                     <span className="relative inline-block">
-                      <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
+                      <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#4F46E5] via-[#818CF8] to-[#A78BFA]">
                         Our Experts
                       </span>
-                      <span className="absolute inset-0 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 blur-xl opacity-70">
+                      <span className="absolute inset-0 bg-clip-text text-transparent bg-gradient-to-r from-[#4F46E5] via-[#818CF8] to-[#A78BFA] blur-xl opacity-40">
                         Our Experts
                       </span>
                     </span>
                   </span>
                 </h1>
 
-                <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
+                <p className="text-xl md:text-2xl text-[#6B7280] mb-10 max-w-2xl leading-relaxed">
                   Get personalized assistance for all your programming book
                   needs. Our expert team is here to guide you through your
                   learning journey with tailored recommendations and solutions.
                 </p>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700/50">
-                    <div className="text-3xl font-bold text-white mb-2">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 shadow-sm">
+                    <div className="text-3xl font-bold text-[#4F46E5] mb-2">
                       24/7
                     </div>
-                    <div className="text-sm text-cyan-300 font-medium">
+                    <div className="text-sm text-[#6B7280] font-medium">
                       Support
                     </div>
                   </div>
-                  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700/50">
-                    <div className="text-3xl font-bold text-white mb-2">2h</div>
-                    <div className="text-sm text-cyan-300 font-medium">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 shadow-sm">
+                    <div className="text-3xl font-bold text-[#4F46E5] mb-2">2h</div>
+                    <div className="text-sm text-[#6B7280] font-medium">
                       Response Time
                     </div>
                   </div>
-                  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700/50">
-                    <div className="text-3xl font-bold text-white mb-2">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 shadow-sm">
+                    <div className="text-3xl font-bold text-[#4F46E5] mb-2">
                       98%
                     </div>
-                    <div className="text-sm text-cyan-300 font-medium">
+                    <div className="text-sm text-[#6B7280] font-medium">
                       Satisfaction
                     </div>
                   </div>
-                  <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700/50">
-                    <div className="text-3xl font-bold text-white mb-2">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 shadow-sm">
+                    <div className="text-3xl font-bold text-[#4F46E5] mb-2">
                       20+
                     </div>
-                    <div className="text-sm text-cyan-300 font-medium">
+                    <div className="text-sm text-[#6B7280] font-medium">
                       Books
                     </div>
                   </div>
@@ -121,9 +121,9 @@ const ContactHero = () => {
                 <div className="flex flex-wrap gap-4">
                   <a
                     href="#contact-form"
-                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+                    className="group relative px-8 py-4 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#4F46E5]/25"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#4F46E5]/90 to-[#818CF8]/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                     <span className="relative z-10 flex items-center">
                       <img
                         src="https://img.icons8.com/ios/50/FFFFFF/chat--v1.png"
@@ -136,11 +136,10 @@ const ContactHero = () => {
 
                   <a
                     href="tel:+916351559214"
-                    className="group px-8 py-4 bg-gray-800/50 backdrop-blur-sm border border-gray-700 text-white font-semibold rounded-xl hover:bg-gray-700/50 transition-all duration-300 hover:scale-105 flex items-center"
+                    className="group px-8 py-4 bg-white/80 backdrop-blur-sm border border-gray-200 text-[#4F46E5] font-semibold rounded-xl hover:bg-white transition-all duration-300 hover:scale-105 flex items-center shadow-sm"
                   >
                     <div className="relative mr-3">
-                      <div className="absolute inset-0 bg-blue-500 rounded-full animate-ping"></div>
-                      <div className="relative bg-blue-600 p-2 rounded-full">
+                      <div className="relative bg-gradient-to-r from-[#4F46E5] to-[#818CF8] p-2 rounded-full">
                         <img
                           src="https://img.icons8.com/ios/50/FFFFFF/phone--v1.png"
                           alt="Phone"
@@ -162,12 +161,12 @@ const ContactHero = () => {
                 }`}
               >
                 <div className="relative">
-                  <div className="relative bg-gray-800/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 shadow-2xl">
+                  <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-8 border border-gray-200 shadow-xl">
                     <div className="absolute -top-4 -right-4 w-32 h-32">
                       <img
-                        src="https://img.icons8.com/ios/100/3b82f6/connection-status-on.png"
+                        src="https://img.icons8.com/ios/100/4F46E5/connection-status-on.png"
                         alt="Connection"
-                        className="w-full h-full opacity-70"
+                        className="w-full h-full opacity-50"
                         style={{
                           animation: "spin 20s linear infinite",
                         }}
@@ -177,8 +176,7 @@ const ContactHero = () => {
                     <div className="grid grid-cols-3 gap-6 mb-8">
                       <div className="text-center">
                         <div className="relative mx-auto mb-3">
-                          <div className="absolute inset-0 bg-blue-500/20 rounded-full animate-ping"></div>
-                          <div className="relative bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center">
+                          <div className="relative bg-gradient-to-r from-[#4F46E5] to-[#818CF8] w-16 h-16 rounded-full flex items-center justify-center">
                             <img
                               src="https://img.icons8.com/ios/50/FFFFFF/email--v1.png"
                               alt="Email"
@@ -186,16 +184,15 @@ const ContactHero = () => {
                             />
                           </div>
                         </div>
-                        <div className="text-white font-medium">Email</div>
-                        <div className="text-sm text-cyan-300">
+                        <div className="text-[#111827] font-medium">Email</div>
+                        <div className="text-sm text-[#6B7280]">
                           bookmarkd@gmail.com
                         </div>
                       </div>
 
                       <div className="text-center">
                         <div className="relative mx-auto mb-3">
-                          <div className="absolute inset-0 bg-green-500/20 rounded-full animate-ping delay-150"></div>
-                          <div className="relative bg-green-600 w-16 h-16 rounded-full flex items-center justify-center">
+                          <div className="relative bg-green-500 w-16 h-16 rounded-full flex items-center justify-center">
                             <img
                               src="https://img.icons8.com/ios/50/FFFFFF/clock--v1.png"
                               alt="Hours"
@@ -203,14 +200,13 @@ const ContactHero = () => {
                             />
                           </div>
                         </div>
-                        <div className="text-white font-medium">Hours</div>
-                        <div className="text-sm text-cyan-300">9am-8pm</div>
+                        <div className="text-[#111827] font-medium">Hours</div>
+                        <div className="text-sm text-[#6B7280]">9am-8pm</div>
                       </div>
 
                       <div className="text-center">
                         <div className="relative mx-auto mb-3">
-                          <div className="absolute inset-0 bg-purple-500/20 rounded-full animate-ping delay-300"></div>
-                          <div className="relative bg-purple-600 w-16 h-16 rounded-full flex items-center justify-center">
+                          <div className="relative bg-purple-500 w-16 h-16 rounded-full flex items-center justify-center">
                             <img
                               src="https://img.icons8.com/ios/50/FFFFFF/conference-call.png"
                               alt="Team"
@@ -218,8 +214,8 @@ const ContactHero = () => {
                             />
                           </div>
                         </div>
-                        <div className="text-white font-medium">Team</div>
-                        <div className="text-sm text-cyan-300">
+                        <div className="text-[#111827] font-medium">Team</div>
+                        <div className="text-sm text-[#6B7280]">
                           Experts Online
                         </div>
                       </div>
@@ -227,18 +223,18 @@ const ContactHero = () => {
 
                     <div className="space-y-4 mb-8">
                       <div className="flex items-start space-x-3">
-                        <div className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="bg-gradient-to-r from-[#4F46E5] to-[#818CF8] w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
                           <img
                             src="https://img.icons8.com/ios/50/FFFFFF/user-male-circle--v1.png"
                             alt="Agent"
                             className="w-5 h-5"
                           />
                         </div>
-                        <div className="bg-gray-700/50 backdrop-blur-sm rounded-2xl rounded-tl-none p-4">
-                          <div className="text-white font-medium mb-1">
+                        <div className="bg-gray-100/80 backdrop-blur-sm rounded-2xl rounded-tl-none p-4">
+                          <div className="text-[#111827] font-medium mb-1">
                             Support Agent
                           </div>
-                          <div className="text-gray-300">
+                          <div className="text-[#6B7280]">
                             Hi! How can I help you find the perfect programming
                             book today?
                           </div>
@@ -246,15 +242,15 @@ const ContactHero = () => {
                       </div>
 
                       <div className="flex items-start space-x-3 justify-end">
-                        <div className="bg-gray-700/50 backdrop-blur-sm rounded-2xl rounded-tr-none p-4 max-w-xs">
-                          <div className="text-cyan-300 font-medium mb-1">
+                        <div className="bg-gray-100/80 backdrop-blur-sm rounded-2xl rounded-tr-none p-4 max-w-xs">
+                          <div className="text-[#4F46E5] font-medium mb-1">
                             You
                           </div>
-                          <div className="text-gray-300">
+                          <div className="text-[#6B7280]">
                             Looking for Python data science books...
                           </div>
                         </div>
-                        <div className="bg-cyan-600 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="bg-gradient-to-r from-[#4F46E5] to-[#818CF8] w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
                           <img
                             src="https://img.icons8.com/ios/50/FFFFFF/user-male-circle--v1.png"
                             alt="You"
@@ -264,11 +260,11 @@ const ContactHero = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-2 text-gray-400">
+                    <div className="flex items-center space-x-2 text-[#6B7280]">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce delay-150"></div>
-                        <div className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce delay-300"></div>
+                        <div className="w-2 h-2 bg-[#4F46E5] rounded-full"></div>
+                        <div className="w-2 h-2 bg-[#4F46E5] rounded-full"></div>
+                        <div className="w-2 h-2 bg-[#4F46E5] rounded-full"></div>
                       </div>
                       <span className="text-sm">
                         Support agent is typing...
@@ -276,7 +272,7 @@ const ContactHero = () => {
                     </div>
                   </div>
 
-                  <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl blur-xl"></div>
+                  <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-[#4F46E5]/20 to-[#818CF8]/20 rounded-2xl blur-xl"></div>
                   <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl"></div>
                 </div>
               </div>
@@ -285,19 +281,19 @@ const ContactHero = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2
-        transform transition-all duration-1000 delay-500
-        ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}">
+      <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-500 ${
+        mounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+      }`}>
         <a
           href="#contact-form"
-          className="group flex flex-col items-center text-cyan-300 hover:text-white transition-colors duration-300"
+          className="group flex flex-col items-center text-[#4F46E5] hover:text-[#4F46E5]/80 transition-colors duration-300"
         >
           <span className="text-sm font-medium mb-3 opacity-70 group-hover:opacity-100">
             Continue to Contact Form
           </span>
           <div className="relative">
-            <div className="w-10 h-16 border-2 border-cyan-300/30 rounded-full">
-              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-4 bg-cyan-400 rounded-full animate-scroll"></div>
+            <div className="w-10 h-16 border-2 border-[#4F46E5]/30 rounded-full">
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-4 bg-[#4F46E5] rounded-full animate-scroll"></div>
             </div>
           </div>
         </a>

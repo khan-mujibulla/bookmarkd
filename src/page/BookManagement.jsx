@@ -98,165 +98,196 @@ const BookManagement = () => {
   ];
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-white">Book Management</h1>
-        <button
-          onClick={() => {
-            setEditingBook(null);
-            setFormData({ title: "", author: "", price: "", stock: "", category: "", description: "" });
-            setShowModal(true);
-          }}
-          className="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300"
-        >
-          + Add New Book
-        </button>
-      </div>
-
-      {/* Stats - Total Books Count */}
-      <div className="mb-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
-        <p className="text-gray-300">Total Books: <span className="text-white font-bold">{books.length}</span></p>
-      </div>
-
-      {/* Books Table */}
-      <div className="bg-gray-900/60 backdrop-blur-xl rounded-lg border border-gray-700/50 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-gray-800/50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">ID</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Title</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Author</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Price</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Stock</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Category</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-700">
-              {books.map((book) => (
-                <tr key={book.id} className="hover:bg-gray-800/50 transition-colors">
-                  <td className="px-6 py-4 text-gray-400">#{book.id}</td>
-                  <td className="px-6 py-4 text-white">{book.title}</td>
-                  <td className="px-6 py-4 text-gray-300">{book.author}</td>
-                  <td className="px-6 py-4 text-white">₹{book.price}</td>
-                  <td className="px-6 py-4">
-                    <span className={book.stock < 10 ? "text-red-400 font-bold" : book.stock < 20 ? "text-yellow-400" : "text-green-400"}>
-                      {book.stock}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">
-                      {book.category}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <button
-                      onClick={() => handleEdit(book)}
-                      className="text-blue-400 hover:text-blue-300 mr-3"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(book.id)}
-                      className="text-red-400 hover:text-red-300"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Book Management</h1>
+            <p className="text-gray-500 text-sm mt-1">Manage your book inventory</p>
+          </div>
+          <button
+            onClick={() => {
+              setEditingBook(null);
+              setFormData({ title: "", author: "", price: "", stock: "", category: "", description: "" });
+              setShowModal(true);
+            }}
+            className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-lg hover:from-indigo-700 hover:to-indigo-600 transition-all duration-300"
+          >
+            + Add New Book
+          </button>
         </div>
-      </div>
 
-      {/* Add/Edit Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <h2 className="text-2xl font-bold text-white mb-6">
-              {editingBook ? "Edit Book" : "Add New Book"}
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleInputChange}
-                placeholder="Book Title"
-                className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                required
-              />
-              <input
-                type="text"
-                name="author"
-                value={formData.author}
-                onChange={handleInputChange}
-                placeholder="Author"
-                className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                required
-              />
-              <div className="grid grid-cols-2 gap-4">
-                <input
-                  type="number"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleInputChange}
-                  placeholder="Price (₹)"
-                  className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                  required
-                />
-                <input
-                  type="number"
-                  name="stock"
-                  value={formData.stock}
-                  onChange={handleInputChange}
-                  placeholder="Stock"
-                  className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                  required
-                />
-              </div>
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                required
-              >
-                <option value="">Select Category</option>
-                {categories.map(cat => (
-                  <option key={cat} value={cat}>{cat}</option>
+        {/* Stats - Total Books Count */}
+        <div className="mb-4 p-4 bg-white/80 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm">
+          <p className="text-gray-600">Total Books: <span className="text-gray-900 font-bold">{books.length}</span></p>
+        </div>
+
+        {/* Books Table */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {books.map((book) => (
+                  <tr key={book.id} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4 text-gray-500">#{book.id}</td>
+                    <td className="px-6 py-4">
+                      <div className="font-medium text-gray-900">{book.title}</div>
+                      <div className="text-xs text-gray-500 line-clamp-1">{book.description.substring(0, 50)}...</div>
+                    </td>
+                    <td className="px-6 py-4 text-gray-600">{book.author}</td>
+                    <td className="px-6 py-4 text-gray-900 font-medium">₹{book.price}</td>
+                    <td className="px-6 py-4">
+                      <span className={book.stock < 10 ? "text-red-600 font-bold" : book.stock < 20 ? "text-amber-600" : "text-green-600"}>
+                        {book.stock}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">
+                        {book.category}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <button
+                        onClick={() => handleEdit(book)}
+                        className="text-indigo-600 hover:text-indigo-700 mr-3 font-medium"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(book.id)}
+                        className="text-red-600 hover:text-red-700 font-medium"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
                 ))}
-              </select>
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
-                placeholder="Description"
-                rows="4"
-                className="w-full px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500"
-                required
-              />
-              <div className="flex gap-4 mt-6">
-                <button
-                  type="submit"
-                  className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-300"
-                >
-                  {editingBook ? "Update Book" : "Add Book"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowModal(false)}
-                  className="flex-1 py-3 bg-gray-700 text-white rounded-xl hover:bg-gray-600 transition-all duration-300"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+              </tbody>
+            </table>
           </div>
         </div>
-      )}
+
+        {/* Add/Edit Modal */}
+        {showModal && (
+          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {editingBook ? "Edit Book" : "Add New Book"}
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Book Title *</label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleInputChange}
+                    placeholder="Enter book title"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Author *</label>
+                  <input
+                    type="text"
+                    name="author"
+                    value={formData.author}
+                    onChange={handleInputChange}
+                    placeholder="Enter author name"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Price (₹) *</label>
+                    <input
+                      type="number"
+                      name="price"
+                      value={formData.price}
+                      onChange={handleInputChange}
+                      placeholder="Price"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Stock *</label>
+                    <input
+                      type="number"
+                      name="stock"
+                      value={formData.stock}
+                      onChange={handleInputChange}
+                      placeholder="Stock quantity"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                  <select
+                    name="category"
+                    value={formData.category}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    required
+                  >
+                    <option value="">Select Category</option>
+                    {categories.map(cat => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+                  <textarea
+                    name="description"
+                    value={formData.description}
+                    onChange={handleInputChange}
+                    placeholder="Enter book description"
+                    rows="4"
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    required
+                  />
+                </div>
+                
+                <div className="flex gap-4 mt-6">
+                  <button
+                    type="submit"
+                    className="flex-1 py-3 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-xl hover:from-indigo-700 hover:to-indigo-600 transition-all duration-300 font-medium"
+                  >
+                    {editingBook ? "Update Book" : "Add Book"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                    className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-all duration-300 font-medium"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

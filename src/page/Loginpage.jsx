@@ -83,13 +83,13 @@ const Loginpage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative">
-      {/* Animated background elements - same as your original */}
+    <div className="relative min-h-screen bg-[#F5F6FA] overflow-hidden">
+      {/* Animated background elements - same as HeroSections */}
       <div className="absolute inset-0">
         {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10"
+            className="absolute rounded-full bg-gradient-to-r from-[#4F46E5]/20 to-[#4F46E5]/10"
             style={{
               width: `${Math.random() * 40 + 10}px`,
               height: `${Math.random() * 40 + 10}px`,
@@ -101,17 +101,17 @@ const Loginpage = () => {
         ))}
 
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                              linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #4F46E5 1px, transparent 1px),
+                              linear-gradient(to bottom, #4F46E5 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
 
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#4F46E5]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4F46E5]/5 rounded-full blur-3xl"></div>
       </div>
 
       {/* Login Form */}
@@ -119,28 +119,28 @@ const Loginpage = () => {
         <div className="w-full max-w-md">
           <form
             onSubmit={handleSubmit}
-            className={`flex flex-col gap-5 w-full p-8 rounded-2xl relative bg-gray-900/60 backdrop-blur-xl text-white border border-gray-700/50 shadow-2xl transform transition-all duration-1000 ${
+            className={`flex flex-col gap-5 w-full p-8 rounded-2xl relative bg-white/80 backdrop-blur-xl text-[#111827] border border-gray-200 shadow-sm transform transition-all duration-1000 ${
               mounted ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
             }`}
           >
             {/* Header with animated dot */}
             <div className="relative flex items-center mb-2">
               <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur opacity-75"></div>
-                <div className="relative w-5 h-5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] rounded-full blur opacity-75"></div>
+                <div className="relative w-5 h-5 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] rounded-full"></div>
               </div>
-              <p className="text-2xl font-semibold tracking-tight ml-3">
-                Welcome Back
+              <p className="text-2xl font-semibold tracking-tight ml-3 text-[#111827]">
+                Welcome To BOOKMARK'D
               </p>
-              <div className="absolute w-5 h-5 left-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full animate-ping opacity-75"></div>
+              <div className="absolute w-5 h-5 left-0 bg-gradient-to-r from-[#4F46E5] to-[#818CF8] rounded-full animate-ping opacity-75"></div>
             </div>
 
-            <p className="text-sm text-gray-400 mb-2">
+            <p className="text-sm text-[#6B7280] mb-2">
               Login to access your bookmarks and personalized recommendations.
             </p>
 
             {error && (
-              <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-2 rounded-lg text-sm">
+              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-2 rounded-lg text-sm">
                 {error}
               </div>
             )}
@@ -149,7 +149,7 @@ const Loginpage = () => {
             <div className="relative">
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
                 <svg
-                  className="w-5 h-5 text-gray-400"
+                  className="w-5 h-5 text-[#9CA3AF]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -163,7 +163,7 @@ const Loginpage = () => {
                 </svg>
               </div>
               <input
-                className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-gray-500"
+                className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] focus:outline-none focus:border-[#4F46E5] focus:ring-1 focus:ring-[#4F46E5] transition-all duration-300 placeholder-[#9CA3AF]"
                 type="text"
                 name="username"
                 value={formData.username}
@@ -179,7 +179,7 @@ const Loginpage = () => {
             <div className="relative">
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
                 <svg
-                  className="w-5 h-5 text-gray-400"
+                  className="w-5 h-5 text-[#9CA3AF]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -193,7 +193,7 @@ const Loginpage = () => {
                 </svg>
               </div>
               <input
-                className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-gray-500"
+                className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] focus:outline-none focus:border-[#4F46E5] focus:ring-1 focus:ring-[#4F46E5] transition-all duration-300 placeholder-[#9CA3AF]"
                 type="email"
                 name="email"
                 value={formData.email}
@@ -208,7 +208,7 @@ const Loginpage = () => {
             <div className="relative">
               <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
                 <svg
-                  className="w-5 h-5 text-gray-400"
+                  className="w-5 h-5 text-[#9CA3AF]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -222,7 +222,7 @@ const Loginpage = () => {
                 </svg>
               </div>
               <input
-                className="w-full pl-10 px-4 py-3 bg-gray-800/70 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-gray-500"
+                className="w-full pl-10 px-4 py-3 bg-white border border-gray-200 rounded-xl text-[#111827] focus:outline-none focus:border-[#4F46E5] focus:ring-1 focus:ring-[#4F46E5] transition-all duration-300 placeholder-[#9CA3AF]"
                 type="password"
                 name="password"
                 value={formData.password}
@@ -235,16 +235,16 @@ const Loginpage = () => {
 
             {/* Remember Me & Forgot Password */}
             <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center space-x-2 text-gray-400">
+              <label className="flex items-center space-x-2 text-[#6B7280]">
                 <input
                   type="checkbox"
-                  className="rounded bg-gray-800 border-gray-600 text-blue-500 focus:ring-blue-500 focus:ring-offset-0"
+                  className="rounded bg-white border-gray-300 text-[#4F46E5] focus:ring-[#4F46E5] focus:ring-offset-0"
                 />
                 <span>Remember me</span>
               </label>
               <Link
                 to="/forgot-password"
-                className="text-blue-400 hover:text-blue-300 transition-colors hover:underline"
+                className="text-[#4F46E5] hover:text-[#4F46E5]/80 transition-colors hover:underline"
               >
                 Forgot Password?
               </Link>
@@ -256,8 +256,8 @@ const Loginpage = () => {
               disabled={isSubmitting}
               className={`mt-2 py-3 rounded-xl font-medium text-white transition-all duration-300 ${
                 isSubmitting
-                  ? "bg-blue-800 cursor-not-allowed"
-                  : "bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+                  ? "bg-[#818CF8] cursor-not-allowed"
+                  : "bg-gradient-to-r from-[#4F46E5] to-[#818CF8] hover:from-[#4F46E5]/90 hover:to-[#818CF8]/90 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
               }`}
             >
               {isSubmitting ? (
@@ -290,11 +290,11 @@ const Loginpage = () => {
             </button>
 
             {/* Sign Up Link - FIXED: to="/Sign" */}
-            <p className="text-center text-sm text-gray-400 mt-2">
+            <p className="text-center text-sm text-[#6B7280] mt-2">
               Don't have an account?{" "}
               <Link
                 to="/Sign"
-                className="text-blue-400 hover:text-blue-300 transition-colors hover:underline font-medium"
+                className="text-[#4F46E5] hover:text-[#4F46E5]/80 transition-colors hover:underline font-medium"
               >
                 Sign up here
               </Link>
